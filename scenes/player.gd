@@ -17,6 +17,9 @@ var is_moving = false
 var is_airborne = false
 var is_fast_falling = false
 
+const WALK_SFX_COOLDOWN = 0.3 # seconds
+var walk_sfx_cooldown = 0
+
 func _ready():
     pass
 
@@ -54,6 +57,7 @@ func _physics_process(delta):
     velocity = move_and_slide(velocity, Vector2.UP)
 
     _update_sprite_flip()
+    _walk_sfx(delta)
 
 func _jump():
     is_airborne = true
@@ -62,3 +66,10 @@ func _jump():
     
 func _update_sprite_flip():
     $sprite.flip_h = not facing_left
+
+func _walk_sfx(delta):
+    if is_on_floor() and is_moving and walk_sfx_cooldown <= 0:
+        sfx.play(sfx.WALK, sfx.QUIET_DB)
+        walk_sfx_cooldown = WALK_SFX_COOLDOWN
+    if walk_sfx_cooldown > 0:
+        walk_sfx_cooldown -= delta
