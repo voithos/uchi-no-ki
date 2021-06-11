@@ -11,7 +11,15 @@ config_version=4
 [application]
 
 config/name="ggj2021"
+run/main_scene="res://scenes/player.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [physics]
 
@@ -19,4 +27,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
