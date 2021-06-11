@@ -68,7 +68,11 @@ func _update_sprite_flip():
     $sprite.flip_h = not facing_left
 
 func _walk_sfx(delta):
-    if is_on_floor() and is_moving and walk_sfx_cooldown <= 0:
+    if !is_on_floor() or !is_moving:
+        walk_sfx_cooldown = 0
+        return
+
+    if walk_sfx_cooldown <= 0:
         sfx.play(sfx.WALK, sfx.QUIET_DB)
         walk_sfx_cooldown = WALK_SFX_COOLDOWN
     if walk_sfx_cooldown > 0:

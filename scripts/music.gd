@@ -6,7 +6,7 @@ const FADE_TIME = 10
 const MIN_DB = -80.0
 const DEFAULT_DB = 0.0
 
-const MUSIC_DB = -20.0
+const MUSIC_DB = -10.0
 
 class MusicBox extends Node:
     var player
@@ -33,8 +33,8 @@ class MusicBox extends Node:
         self.tween.connect("tween_completed", self, "on_fade_complete")
 
     func set_volume_db(volume_db):
-        player.volume_db = MIN_DB
-        alt_player.volume_db = MIN_DB
+        player.volume_db = volume_db
+        alt_player.volume_db = volume_db
 
     func fade_in():
         player.play(last_playback_pos)
@@ -55,8 +55,8 @@ class MusicBox extends Node:
         return tween.is_active()
 
     func play():
-        player.volume_db = MIN_DB
-        alt_player.volume_db = MIN_DB
+        player.volume_db = MUSIC_DB
+        alt_player.volume_db = MUSIC_DB
         player.play()
         alt_player.play()
 

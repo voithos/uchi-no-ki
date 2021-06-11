@@ -3,7 +3,7 @@ extends Node
 # Centralized SFX management.
 
 const SFX_DB = -8.0
-const QUIET_DB = -16.0
+const QUIET_DB = -12.0
 
 enum {
     WALK,
