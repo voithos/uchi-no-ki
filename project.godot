@@ -24,6 +24,10 @@ config/name="ggj2021"
 run/main_scene="res://scenes/demo.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+music="*res://scripts/music.gd"
+
 [display]
 
 window/size/width=320
