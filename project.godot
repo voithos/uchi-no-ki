@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 music="*res://scripts/music.gd"
+screen="*res://scripts/screen.gd"
 
 [display]
 
