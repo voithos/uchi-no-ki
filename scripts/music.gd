@@ -4,7 +4,7 @@ extends Node
 
 const FADE_TIME = 10
 const MIN_DB = -80.0
-const MUSIC_DB = -20.0
+const MUSIC_DB = -24.0
 
 class MusicBox extends Node:
     var player

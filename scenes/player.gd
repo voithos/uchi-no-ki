@@ -8,9 +8,9 @@ const HORIZONTAL_VEL = 80.0
 const HORIZONTAL_ACCEL = 20 # How quickly we accelerate to max speed
 
 const SHADE_HORIZONTAL_VEL = 100.0
-const SHADE_HORIZONTAL_ACCEL = 2.5
+const SHADE_HORIZONTAL_ACCEL = 4
 const SHADE_VERTICAL_VEL = 70.0
-const SHADE_VERTICAL_ACCEL = 2.5
+const SHADE_VERTICAL_ACCEL = 4
 
 const SHADE_INITIAL_VEL = 0.7 # Percent of char's velocity
 
@@ -24,7 +24,7 @@ const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 const MAX_MANA = 100.0
 var mana = MAX_MANA
 const MANA_DEPLETION = 70 # Rate of depletion
-const MANA_GAIN = 50 # Rate of gain when not in shade
+const MANA_GAIN = 70 # Rate of gain when not in shade
 # TODO: Add distance factor? Or maybe elasticity?
 signal mana_changed
 
@@ -96,6 +96,7 @@ func _move_player(delta):
             target_horizontal -= HORIZONTAL_VEL
             is_moving = true
         if Input.is_action_pressed("move_right"):
+            
             target_horizontal += HORIZONTAL_VEL
             is_moving = true
 
