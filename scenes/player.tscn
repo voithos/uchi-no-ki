@@ -91,13 +91,11 @@ extents = Vector2( 4, 7 )
 radius = 4.0
 
 [node name="player" type="KinematicBody2D"]
-collision_layer = 3
+collision_layer = 19
 script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 5 )
-hframes = 10
-frame = 9
+texture = ExtResource( 1 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 3 )

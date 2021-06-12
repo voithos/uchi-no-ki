@@ -32,8 +32,8 @@ script = ExtResource( 2 )
 anims/idle = SubResource( 1 )
 
 [node name="area" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 16
+collision_mask = 16
 
 [node name="shape" type="CollisionShape2D" parent="area"]
 position = Vector2( 0, 2 )
