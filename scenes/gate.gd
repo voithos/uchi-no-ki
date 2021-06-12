@@ -10,10 +10,13 @@ func _ready():
     else:
         $animation.seek(0, true)
     $animation.stop()
+    
+    _add_to_gate_group()
 
 func _input(event):
-    if OS.is_debug_build() and event is InputEventKey and event.is_action_pressed("debug"):
-        toggle()
+#    if OS.is_debug_build() and event is InputEventKey and event.is_action_pressed("debug"):
+#        toggle()
+    pass
 
 func open():
     if !is_open:
@@ -31,3 +34,6 @@ func toggle():
         close()
     else:
         open()
+
+func _add_to_gate_group():
+    $"..".add_gate(self)

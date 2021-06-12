@@ -5,10 +5,14 @@
 - Add tether mode mana (code)
 - Add tether mode movement depletion
 - Add phantasm movement (floaty?)
+- Goal post
+- Goal animation
+- Start animation
+- Title screen
+- End screen
 
 Puzzle props (art and code):
 - Button
-- Switch (must be hit?)
 
 ## Levels
 
@@ -17,6 +21,7 @@ Puzzle props (art and code):
 - Small space level
 - Switch too high level
 - ???
+
 
 ## Stretch goals
 
@@ -37,3 +42,4 @@ Puzzle props (art and code):
 - Make player art
 - Gate
 - Make tile set
+- Switch (must be hit?)
