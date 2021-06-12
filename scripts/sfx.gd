@@ -22,6 +22,7 @@ func _ready():
     _init_stream_players()
 
 func _init_stream_players():
+    # warning-ignore:unused_variable
     for i in range(POOL_SIZE):
         var player = AudioStreamPlayer.new()
         add_child(player)

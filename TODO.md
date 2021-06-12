@@ -8,8 +8,11 @@
 - Add tether mode movement depletion
 - Add phantasm movement (floaty?)
 - Make tile set
-- Make normal switch/button and gate
-- Make tether switch/button and gate
+
+Puzzle props:
+- Button
+- Switch (must be hit?)
+- Gate
 
 ## Done
 
