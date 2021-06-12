@@ -19,6 +19,13 @@ const FAST_FALL_MULTIPLIER = 1.7 # How much faster fast fall is compared to grav
 
 const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 
+const MAX_MANA = 100.0
+var mana = MAX_MANA
+const MANA_DEPLETION = 30 # Rate of depletion
+const MANA_GAIN = 70 # Rate of gain when not in shade
+# TODO: Add distance factor
+signal mana_changed
+
 var facing_left = true
 var is_moving = false
 var is_shade_moving = false
@@ -30,6 +37,7 @@ const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
 
 func _ready():
+    add_to_group("player")
     $shade.hide()
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
@@ -41,9 +49,10 @@ func _physics_process(delta):
 
     if is_shade_out:
         _move_shade(delta)
-
     _move_player(delta)
 
+    _update_mana(delta)
+    
     _update_sprite_flip()
     _walk_sfx(delta)
 
@@ -126,6 +135,15 @@ func _jump():
     is_fast_falling = false
     velocity.y = -JUMP_VEL
     
+func _update_mana(delta):
+    if is_shade_out:
+        mana = max(0, mana - MANA_DEPLETION * delta)
+        if mana == 0:
+            _toggle_shade()
+    else:
+        mana = min(MAX_MANA, mana + MANA_GAIN * delta)
+    emit_signal("mana_changed", mana / MAX_MANA)
+
 func _update_sprite_flip():
     if is_shade_out:
         $shade/sprite.flip_h = not facing_left

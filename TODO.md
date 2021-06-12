@@ -9,13 +9,14 @@
 ## Tomorrow
 
 - Initial level
+- Acid code
+- Acid animation
 - Goal post
 - Goal animation
 
-- Start animation
+- Level entry animation
 - Title screen
 - End screen
-
 
 ## Levels
 
@@ -25,12 +26,17 @@
 - Switch too high level
 - ???
 
+## Bugs
+
+- Getting squished by gate doesn't work
+
 ## Stretch goals
 
 - Decorative tiles
 - Character animation
 - Sound effects
 - Transitions
+- Camera shake
 
 ## == Done ==
 
