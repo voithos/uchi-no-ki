@@ -23,7 +23,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7, 2 )
 
-[node name="switch" type="Sprite"]
+[node name="button" type="Sprite"]
 texture = ExtResource( 1 )
 hframes = 3
 script = ExtResource( 2 )

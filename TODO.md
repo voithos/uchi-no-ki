@@ -2,11 +2,9 @@
 
 ## Before bed
 
-- Make phantasm art
-- Add tether mode transform (code)
 - Add tether mode mana (code)
 - Add tether mode movement depletion
-- Add phantasm movement (floaty?)
+- Add tether animation
 
 ## Tomorrow
 
@@ -48,3 +46,4 @@
 - Make tile set
 - Switch (must be hit?)
 - Add button
+- Add phantasm movement (floaty?)
