@@ -4,7 +4,6 @@
 
 - Initial level
 - Acid code
-- Acid animation
 - Add tether animation? Unnecessary?
 
 - Level entry animation
@@ -50,3 +49,4 @@
 - Add tether mode movement depletion
 - Goal post
 - Goal animation
+- Acid animation
