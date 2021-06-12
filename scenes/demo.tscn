@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gate_group.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/button.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,6 +30,9 @@ rotation = -1.5708
 position = Vector2( 34, 48 )
 frame = 0
 is_toggleable = true
+
+[node name="switch2" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
+position = Vector2( -23, 48 )
 
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
 position = Vector2( -1, 48 )

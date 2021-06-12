@@ -1,18 +1,23 @@
 # TODO
 
+## Before bed
+
 - Make phantasm art
 - Add tether mode transform (code)
 - Add tether mode mana (code)
 - Add tether mode movement depletion
 - Add phantasm movement (floaty?)
+
+## Tomorrow
+
+- Initial level
 - Goal post
 - Goal animation
+
 - Start animation
 - Title screen
 - End screen
 
-Puzzle props (art and code):
-- Button
 
 ## Levels
 
@@ -22,7 +27,6 @@ Puzzle props (art and code):
 - Switch too high level
 - ???
 
-
 ## Stretch goals
 
 - Decorative tiles
@@ -30,7 +34,7 @@ Puzzle props (art and code):
 - Sound effects
 - Transitions
 
-## Done
+## == Done ==
 
 - Design
 - Create player scene
@@ -43,3 +47,4 @@ Puzzle props (art and code):
 - Gate
 - Make tile set
 - Switch (must be hit?)
+- Add button
