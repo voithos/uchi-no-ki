@@ -21,9 +21,9 @@ const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 
 const MAX_MANA = 100.0
 var mana = MAX_MANA
-const MANA_DEPLETION = 30 # Rate of depletion
-const MANA_GAIN = 70 # Rate of gain when not in shade
-# TODO: Add distance factor
+const MANA_DEPLETION = 50 # Rate of depletion
+const MANA_GAIN = 40 # Rate of gain when not in shade
+# TODO: Add distance factor? Or maybe elasticity?
 signal mana_changed
 
 var facing_left = true
@@ -35,6 +35,8 @@ var is_shade_out = false
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
+
+onready var camera = $shade/player_camera
 
 func _ready():
     add_to_group("player")

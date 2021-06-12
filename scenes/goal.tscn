@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/props/goal.png" type="Texture" id=1]
+[ext_resource path="res://scenes/goal.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 11 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 8 )
+
+[node name="goal" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 12
+frame = 4
+script = ExtResource( 2 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="shape" type="CollisionShape2D" parent="area"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

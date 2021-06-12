@@ -1,18 +1,11 @@
 # TODO
 
-## Before bed
-
-- Add tether mode mana (code)
-- Add tether mode movement depletion
-- Add tether animation
-
 ## Tomorrow
 
 - Initial level
 - Acid code
 - Acid animation
-- Goal post
-- Goal animation
+- Add tether animation? Unnecessary?
 
 - Level entry animation
 - Title screen
@@ -53,3 +46,7 @@
 - Switch (must be hit?)
 - Add button
 - Add phantasm movement (floaty?)
+- Add tether mode mana (code)
+- Add tether mode movement depletion
+- Goal post
+- Goal animation

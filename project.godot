@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 music="*res://scripts/music.gd"
 screen="*res://scripts/screen.gd"
 sfx="*res://scripts/sfx.gd"
+global_camera="*res://scripts/global_camera.gd"
 
 [display]
 
