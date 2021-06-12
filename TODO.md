@@ -1,10 +1,8 @@
 # TODO
 
-## Tomorrow
-
 - Initial level
-- Acid code
-- Add tether animation? Unnecessary?
+- Shade particles
+- Shade start / stop animations
 
 - Level entry animation
 - Title screen
@@ -29,6 +27,7 @@
 - Sound effects
 - Transitions
 - Camera shake
+- Icon
 
 ## == Done ==
 
@@ -50,3 +49,4 @@
 - Goal post
 - Goal animation
 - Acid animation
+- Acid code

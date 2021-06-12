@@ -42,6 +42,7 @@ onready var camera = $shade/player_camera
 
 func _ready():
     add_to_group("player")
+    $animation.play("idle")
     $shade.hide()
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
@@ -177,5 +178,7 @@ func _on_hurtbox_body_entered(body):
 
 func die():
     is_controllable = false
-    # TODO: Add death animation and transition
-    
+    $animation.play("death")
+    yield($animation, "animation_finished")
+    var level = get_tree().get_nodes_in_group("level")[0]
+    level.begin_reset_transition()
