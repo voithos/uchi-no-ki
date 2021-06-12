@@ -5,11 +5,9 @@
 - Add tether mode mana (code)
 - Add tether mode movement depletion
 - Add phantasm movement (floaty?)
-- Make tile set
 
 Puzzle props (art and code):
 - Button
-- Gate
 - Switch (must be hit?)
 
 ## Levels
@@ -37,3 +35,5 @@ Puzzle props (art and code):
 - Add left/right mirroring
 - Pick color scheme
 - Make player art
+- Gate
+- Make tile set
