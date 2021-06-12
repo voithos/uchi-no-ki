@@ -7,10 +7,10 @@ var shade_velocity = Vector2.ZERO
 const HORIZONTAL_VEL = 80.0
 const HORIZONTAL_ACCEL = 20 # How quickly we accelerate to max speed
 
-const SHADE_HORIZONTAL_VEL = 50.0
-const SHADE_HORIZONTAL_ACCEL = 40
-const SHADE_VERTICAL_VEL = 50.0
-const SHADE_VERTICAL_ACCEL = 40
+const SHADE_HORIZONTAL_VEL = 100.0
+const SHADE_HORIZONTAL_ACCEL = 2.5
+const SHADE_VERTICAL_VEL = 70.0
+const SHADE_VERTICAL_ACCEL = 2.5
 
 const GRAVITY = 6.0
 const JUMP_VEL = 160
@@ -21,8 +21,8 @@ const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 
 const MAX_MANA = 100.0
 var mana = MAX_MANA
-const MANA_DEPLETION = 50 # Rate of depletion
-const MANA_GAIN = 40 # Rate of gain when not in shade
+const MANA_DEPLETION = 70 # Rate of depletion
+const MANA_GAIN = 50 # Rate of gain when not in shade
 # TODO: Add distance factor? Or maybe elasticity?
 signal mana_changed
 
@@ -65,14 +65,24 @@ func _physics_process(delta):
     _walk_sfx(delta)
 
 func _toggle_shade():
-    is_shade_out = !is_shade_out
     if is_shade_out:
-        $shade.show()
-        $shade/shape.disabled = false
+        _hide_shade()
     else:
-        $shade.hide()
-        $shade/shape.disabled = true
+        _show_shade()
+
+func _hide_shade():
+    is_shade_out = false
+    $shade.hide()
     $shade.position = Vector2.ZERO
+    shade_velocity = Vector2.ZERO
+    $shade/shape.disabled = true
+
+func _show_shade():
+    is_shade_out = true
+    $shade.show()
+    $shade.position = Vector2.ZERO
+    shade_velocity = velocity
+    $shade/shape.disabled = false
 
 func _move_player(delta):
     var target_horizontal = 0
@@ -170,7 +180,7 @@ func _walk_sfx(delta):
         walk_sfx_cooldown -= delta
 
 func _on_hurtbox_area_entered(area):
-    pass # Actually uses the body
+    die()
 
 func _on_hurtbox_body_entered(body):
     die()

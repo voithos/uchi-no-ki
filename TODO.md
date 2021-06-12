@@ -6,7 +6,6 @@
 
 - Level entry animation
 - Title screen
-- End screen
 
 ## Levels
 
@@ -17,8 +16,6 @@
 - ???
 
 ## Bugs
-
-- Getting squished by gate doesn't work
 
 ## Stretch goals
 
@@ -50,3 +47,6 @@
 - Goal animation
 - Acid animation
 - Acid code
+- End screen
+- Getting squished by gate doesn't work
+

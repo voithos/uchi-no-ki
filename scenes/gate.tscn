@@ -1,13 +1,102 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/props/gate.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gate.gd" type="Script" id=2]
+[ext_resource path="res://assets/props/gate_close.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 24 )
+extents = Vector2( 10, 23 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 4 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "close"
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.84 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/shape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.32, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -29 ), Vector2( 0, -29 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/hitbox_shape:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.32, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, -9 ), Vector2( 0, 20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hitbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("hitbox:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:hframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 17 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "open"
@@ -36,10 +125,74 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -29 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/hitbox_shape:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, -9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hitbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("hitbox:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:hframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 4 )
 
 [node name="gate" type="Sprite"]
 texture = ExtResource( 1 )
 hframes = 13
+frame = 12
 script = ExtResource( 2 )
 
 [node name="body" type="StaticBody2D" parent="."]
@@ -47,6 +200,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="shape" type="CollisionShape2D" parent="body"]
+position = Vector2( 0, -29 )
 shape = SubResource( 1 )
 
 [node name="root" type="CollisionShape2D" parent="body"]
@@ -54,4 +208,15 @@ position = Vector2( 0, -20 )
 shape = SubResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 5 )
 anims/open = SubResource( 3 )
+
+[node name="hitbox" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
+position = Vector2( 0, -9 )
+shape = SubResource( 4 )
