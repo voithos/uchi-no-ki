@@ -48,4 +48,4 @@ position = Vector2( -215, 48 )
 rotation = 3.14159
 
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
-position = Vector2( -1, 48 )
+position = Vector2( -93, 48 )

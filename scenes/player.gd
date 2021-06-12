@@ -33,6 +33,8 @@ var is_airborne = false
 var is_fast_falling = false
 var is_shade_out = false
 
+var is_controllable = true
+
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
 
@@ -46,6 +48,9 @@ func _ready():
     pass
 
 func _physics_process(delta):
+    if !is_controllable:
+        return
+
     if Input.is_action_just_pressed("ki_burst"):
         _toggle_shade()
 
@@ -162,3 +167,15 @@ func _walk_sfx(delta):
         walk_sfx_cooldown = WALK_SFX_COOLDOWN
     if walk_sfx_cooldown > 0:
         walk_sfx_cooldown -= delta
+
+
+func _on_hurtbox_area_entered(area):
+    pass # Actually uses the body
+
+func _on_hurtbox_body_entered(body):
+    die()
+
+func die():
+    is_controllable = false
+    # TODO: Add death animation and transition
+    
