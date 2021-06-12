@@ -12,6 +12,8 @@ const SHADE_HORIZONTAL_ACCEL = 2.5
 const SHADE_VERTICAL_VEL = 70.0
 const SHADE_VERTICAL_ACCEL = 2.5
 
+const SHADE_INITIAL_VEL = 0.7 # Percent of char's velocity
+
 const GRAVITY = 6.0
 const JUMP_VEL = 160
 const TERM_VEL = JUMP_VEL * 2
@@ -81,7 +83,7 @@ func _show_shade():
     is_shade_out = true
     $shade.show()
     $shade.position = Vector2.ZERO
-    shade_velocity = velocity
+    shade_velocity = velocity * SHADE_INITIAL_VEL
     $shade/shape.disabled = false
 
 func _move_player(delta):

@@ -190,9 +190,9 @@ tracks/6/keys = {
 extents = Vector2( 8, 4 )
 
 [node name="gate" type="Sprite"]
-texture = ExtResource( 1 )
-hframes = 13
-frame = 12
+texture = ExtResource( 3 )
+hframes = 17
+frame = 16
 script = ExtResource( 2 )
 
 [node name="body" type="StaticBody2D" parent="."]
@@ -200,7 +200,6 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="shape" type="CollisionShape2D" parent="body"]
-position = Vector2( 0, -29 )
 shape = SubResource( 1 )
 
 [node name="root" type="CollisionShape2D" parent="body"]
@@ -214,9 +213,9 @@ anims/open = SubResource( 3 )
 [node name="hitbox" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
-collision_layer = 0
+collision_layer = 8
 collision_mask = 0
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 0, -9 )
+position = Vector2( 0, 20 )
 shape = SubResource( 4 )
