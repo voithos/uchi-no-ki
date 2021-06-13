@@ -2,11 +2,9 @@
 
 - Mana restoration node
 - Dash node
-- Timed switches?
 
 ## Levels
 
-- Button madness / ordering level
 - Platforming level
 - Midair shenanigans level
 - ???
@@ -53,3 +51,5 @@
 - End screen
 - Getting squished by gate doesn't work
 - Intro level
+- Button madness / ordering level
+- Timed switches?

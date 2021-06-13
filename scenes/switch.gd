@@ -3,11 +3,20 @@ extends Sprite
 export var is_on = false
 # Whether or not you can "undo" the toggle
 export var is_toggleable = false
+# Whether or not the switch is timed
+export var is_timed = false
+export (float) var timeout = 0
 
 onready var gate_group = $".."
 
 func _ready():
     add_to_group("switches")
+    if is_timed:
+        assert(timeout != 0)
+        texture = preload("res://assets/props/timed_switch.png")
+    else:
+        texture = preload("res://assets/props/switch.png")
+    
     $animation.play("switch")
     if is_on:
         $animation.seek(0.5, true)
@@ -21,11 +30,19 @@ func open():
     if !is_on:
         $animation.play("switch")
         is_on = true
+        gate_group.on_switch_toggle()
+        
+        $timer.wait_time = timeout
+        $timer.one_shot = true
+        $timer.start()
+        yield($timer, "timeout")
+        close()
         
 func close():
     if is_on:
         $animation.play_backwards("switch")
         is_on = false
+        gate_group.on_switch_toggle()
 
 func toggle():
     if is_on and !is_toggleable:
@@ -35,8 +52,6 @@ func toggle():
         close()
     else:
         open()
-
-    gate_group.on_switch_toggle()
 
 func _on_area_body_entered(body):
     toggle()

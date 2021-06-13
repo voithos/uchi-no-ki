@@ -40,6 +40,8 @@ rotation = -1.5708
 position = Vector2( 34, 48 )
 frame = 0
 is_toggleable = true
+is_timed = true
+timeout = 2.0
 
 [node name="button" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
 position = Vector2( -23, 48 )
