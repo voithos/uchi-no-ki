@@ -14,7 +14,7 @@
 [node name="level" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 8 )]
-next_level = "res://scenes/end_screen.tscn"
+next_level = "res://scenes/levels/3_platforming.tscn"
 
 [node name="danger_tilemap" parent="level_logic" instance=ExtResource( 9 )]
 tile_data = PoolIntArray( 851961, 0, 0, 851962, 0, 0, 851963, 0, 0, 851964, 0, 0, 917498, 1, 0, 917499, 1, 0, 917500, 1, 0 )

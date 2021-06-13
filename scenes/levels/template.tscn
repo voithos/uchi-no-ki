@@ -33,7 +33,6 @@ position = Vector2( -50, 32 )
 [node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 5 )]
 position = Vector2( 34, 48 )
 frame = 0
-is_toggleable = true
 
 [node name="button" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
 position = Vector2( -23, 48 )

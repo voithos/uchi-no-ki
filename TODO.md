@@ -25,7 +25,10 @@
 - Camera shake
 - Icon
 
-- Slow down physics for non-soul?
+## Super stretch goals
+
+- Slow down physics while in shade mode?
+- Time left above timed switches
 
 ## == Done ==
 

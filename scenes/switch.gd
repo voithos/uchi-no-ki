@@ -7,6 +7,12 @@ export var is_toggleable = false
 export var is_timed = false
 export (float) var timeout = 0
 
+# Necessary switches must all be true in order to open a gate.
+# Sufficient switches open the gate all by themselves.
+# A switch that is unnecessary, but sufficient, can act as a "reset" for a locked gate.
+export (bool) var is_necessary = true
+export (bool) var is_sufficient = false
+
 onready var gate_group = $".."
 
 func _ready():

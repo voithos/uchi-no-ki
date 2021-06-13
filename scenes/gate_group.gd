@@ -18,10 +18,14 @@ func on_switch_toggle():
 
     var gate_should_be_open = true
     for switch in switches:
-        if !switch.is_on:
+        if switch.is_necessary and !switch.is_on:
             gate_should_be_open = false
+        # Sufficiency is prioritized over necessity.
+        # Used for "reset" buttons.
+        if switch.is_sufficient and switch.is_on:
+            gate_should_be_open = true
             break
-    
+
     # Check gates and toggle as needed.
     for gate in gates:
         if gate.is_open != gate_should_be_open:
