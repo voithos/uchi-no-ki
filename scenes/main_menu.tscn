@@ -32,6 +32,7 @@ position = Vector2( 160, 90 )
 texture = ExtResource( 2 )
 
 [node name="press_space" type="Sprite" parent="canvas"]
+visible = false
 position = Vector2( 152, 148 )
 texture = ExtResource( 4 )
 

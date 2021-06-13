@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/ui/help_icon_jump.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/help_icon_shade.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/help_icon_move.png" type="Texture" id=11]
 
 [node name="1_intro_level" type="Node2D"]
 
@@ -45,3 +48,15 @@ frame = 0
 
 [node name="player" parent="level_logic" instance=ExtResource( 5 )]
 position = Vector2( 454, 192 )
+
+[node name="help_icon_move" type="Sprite" parent="."]
+position = Vector2( 454, 224 )
+texture = ExtResource( 11 )
+
+[node name="help_icon_jump" type="Sprite" parent="."]
+position = Vector2( 313, 185 )
+texture = ExtResource( 9 )
+
+[node name="help_icon_shade" type="Sprite" parent="."]
+position = Vector2( -184, 464 )
+texture = ExtResource( 10 )

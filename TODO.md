@@ -2,9 +2,6 @@
 
 ## Stretch goals
 
-- Level hints
-- Title screen
-
 - Character animation
 - Icon
 - Decorative tiles
@@ -16,6 +13,8 @@
 
 - Slow down physics while in shade mode?
 - Time left above timed switches
+
+- STORY
 
 ## == Done ==
 
@@ -51,3 +50,5 @@
 - Level entry / exit animation
 - Sound effects
 - Transitions
+- Title screen
+- Level hints
