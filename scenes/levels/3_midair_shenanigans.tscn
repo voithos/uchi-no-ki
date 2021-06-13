@@ -59,7 +59,7 @@ rotation = 3.14159
 is_toggleable = true
 
 [node name="switch2" parent="level_logic/props/gate_group2" instance=ExtResource( 5 )]
-position = Vector2( -80, 256 )
+position = Vector2( -88, 256 )
 rotation = 6.28318
 is_necessary = false
 is_sufficient = true

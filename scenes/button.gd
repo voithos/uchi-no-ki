@@ -22,6 +22,7 @@ func open():
     if !is_on:
         $animation.play("switch")
         is_on = true
+        sfx.play(sfx.BUTTON, sfx.QUIET_DB)
     gate_group.on_switch_toggle()
 
 func close():

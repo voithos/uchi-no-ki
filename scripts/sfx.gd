@@ -14,6 +14,8 @@ enum {
     SHADE,
     SHADE_RETURN,
     TELEPORT,
+    BUTTON,
+    SWITCH,
 }
 
 const SAMPLES = {
@@ -24,6 +26,8 @@ const SAMPLES = {
     SHADE: preload("res://assets/sfx/shade.wav"),
     SHADE_RETURN: preload("res://assets/sfx/shade_return.wav"),
     TELEPORT: preload("res://assets/sfx/teleport.wav"),
+    BUTTON: preload("res://assets/sfx/switch.wav"), # The switch sound is better
+    SWITCH: preload("res://assets/sfx/switch.wav"),
 }
 
 const POOL_SIZE = 8
