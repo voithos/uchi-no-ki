@@ -47,6 +47,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
+length = 0.625
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
@@ -66,10 +68,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("sprite:hframes")
@@ -81,7 +83,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 5 ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -96,6 +98,7 @@ script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )
