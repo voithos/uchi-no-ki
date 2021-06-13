@@ -3,11 +3,9 @@
 ## Stretch goals
 
 - Level hints
-- Level entry / exit animation
 - Title screen
 
 - Character animation
-- Sound effects
 - Transitions
 - Icon
 - Decorative tiles
@@ -51,3 +49,5 @@
 - Midair shenanigans level
 - Shade particles
 - Shade start / stop animations
+- Level entry / exit animation
+- Sound effects

@@ -16,6 +16,7 @@ enum {
     TELEPORT,
     BUTTON,
     SWITCH,
+    CHECKPOINT,
 }
 
 const SAMPLES = {
@@ -28,6 +29,7 @@ const SAMPLES = {
     TELEPORT: preload("res://assets/sfx/teleport.wav"),
     BUTTON: preload("res://assets/sfx/switch.wav"), # The switch sound is better
     SWITCH: preload("res://assets/sfx/switch.wav"),
+    CHECKPOINT: preload("res://assets/sfx/checkpoint.wav"),
 }
 
 const POOL_SIZE = 8
