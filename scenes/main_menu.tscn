@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/transition.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/main_menu.png" type="Texture" id=2]
+[ext_resource path="res://scenes/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/press_space.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "blink"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("canvas/press_space:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="sprite" type="Sprite" parent="canvas"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 2 )
+
+[node name="press_space" type="Sprite" parent="canvas"]
+position = Vector2( 152, 148 )
+texture = ExtResource( 4 )
+
+[node name="transition" parent="." instance=ExtResource( 1 )]
+start_immediately = false
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "blink"
+anims/blink = SubResource( 1 )
