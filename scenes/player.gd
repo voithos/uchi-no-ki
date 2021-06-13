@@ -53,7 +53,12 @@ func _ready():
     $shade.hide()
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
-    pass
+    
+    _maybe_jump_to_checkpoint()
+
+func _maybe_jump_to_checkpoint():
+    if checkpoint_store.has_checkpoint():
+        global_position = checkpoint_store.get_checkpoint()
 
 func _physics_process(delta):
     if !is_controllable:

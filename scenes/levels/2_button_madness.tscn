@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/button.tscn" type="PackedScene" id=10]
 
-[node name="level" type="Node2D"]
+[node name="2_button_madness" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 8 )]
 next_level = "res://scenes/levels/3_platforming.tscn"

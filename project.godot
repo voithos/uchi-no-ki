@@ -30,6 +30,7 @@ music="*res://scripts/music.gd"
 screen="*res://scripts/screen.gd"
 sfx="*res://scripts/sfx.gd"
 global_camera="*res://scripts/global_camera.gd"
+checkpoint_store="*res://scripts/checkpoint_store.gd"
 
 [display]
 
