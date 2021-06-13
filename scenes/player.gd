@@ -24,7 +24,7 @@ const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 const MAX_MANA = 100.0
 var mana = MAX_MANA
 const MANA_DEPLETION = 70 # Rate of depletion
-const MANA_GAIN = 70 # Rate of gain when not in shade
+const MANA_GAIN = 140 # Rate of gain when not in shade
 # TODO: Add distance factor? Or maybe elasticity?
 signal mana_changed
 

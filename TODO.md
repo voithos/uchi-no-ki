@@ -8,15 +8,14 @@
 
 - Shade particles
 - Shade start / stop animations
-- Level entry animation
+- Level entry / exit animation
 - Title screen
 
-- Decorative tiles
 - Character animation
 - Sound effects
 - Transitions
-- Camera shake
 - Icon
+- Decorative tiles
 
 ## Super stretch goals
 
