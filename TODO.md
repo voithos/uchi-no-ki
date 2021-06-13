@@ -3,8 +3,6 @@
 ## Stretch goals
 
 - Level hints
-- Shade particles
-- Shade start / stop animations
 - Level entry / exit animation
 - Title screen
 
@@ -51,3 +49,5 @@
 - Platforming level
 - ???
 - Midair shenanigans level
+- Shade particles
+- Shade start / stop animations

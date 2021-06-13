@@ -51,18 +51,33 @@ onready var camera = $shade/player_camera
 
 func _ready():
     add_to_group("player")
-    $animation.play("idle")
+    
     $shade.hide()
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
     
     _maybe_jump_to_checkpoint()
+    
+    # Initial animation.
+    is_controllable = false
+    $animation.play("teleport")
+    $animation.seek(0, true)
+    $animation.stop()
+
+    $animation.play("teleport")
+    sfx.play(sfx.TELEPORT)
+    yield($animation, "animation_finished")
+    is_controllable = true
+    $animation.play("idle")
 
 func _maybe_jump_to_checkpoint():
     if checkpoint_store.has_checkpoint():
         global_position = checkpoint_store.get_checkpoint()
 
 func _physics_process(delta):
+    # Need to update mana even when uncontrolled in order to update the UI.
+    _update_mana(delta)
+    
     if !is_controllable:
         return
 
@@ -83,8 +98,6 @@ func _physics_process(delta):
             shade_button_held_duration = 0
 
     _move_player(delta)
-
-    _update_mana(delta)
     
     _update_sprite_flip()
     _walk_sfx(delta)
@@ -200,12 +213,14 @@ func _jump():
     sfx.play(sfx.JUMP, sfx.EXTRA_QUIET_DB)
     
 func _update_mana(delta):
-    if is_shade_out:
-        mana = max(0, mana - MANA_DEPLETION * delta)
-        if mana == 0:
-            _toggle_shade()
-    else:
-        mana = min(MAX_MANA, mana + MANA_GAIN * delta)
+    # Don't actually change anything if we aren't controllable, but still send the signal.
+    if is_controllable:
+        if is_shade_out:
+            mana = max(0, mana - MANA_DEPLETION * delta)
+            if mana == 0:
+                _toggle_shade()
+        else:
+            mana = min(MAX_MANA, mana + MANA_GAIN * delta)
     emit_signal("mana_changed", mana / MAX_MANA)
 
 func _update_sprite_flip():
@@ -242,6 +257,9 @@ func die():
 
 func win():
     is_controllable = false
+    $animation.play_backwards("teleport")
+    sfx.play(sfx.TELEPORT)
+    
     var level = get_tree().get_nodes_in_group("level")[0]
     level.begin_next_level_transition()
     

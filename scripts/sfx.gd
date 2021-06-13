@@ -13,6 +13,7 @@ enum {
     JUMP,
     SHADE,
     SHADE_RETURN,
+    TELEPORT,
 }
 
 const SAMPLES = {
@@ -22,6 +23,7 @@ const SAMPLES = {
     JUMP: preload("res://assets/sfx/jump.wav"),
     SHADE: preload("res://assets/sfx/shade.wav"),
     SHADE_RETURN: preload("res://assets/sfx/shade_return.wav"),
+    TELEPORT: preload("res://assets/sfx/teleport.wav"),
 }
 
 const POOL_SIZE = 8
