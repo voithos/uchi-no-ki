@@ -8,11 +8,13 @@ const QUIET_DB = -12.0
 enum {
     WALK,
     GOAL,
+    DEATH,
 }
 
 const SAMPLES = {
     WALK: preload("res://assets/sfx/walk.wav"),
     GOAL: preload("res://assets/sfx/goal.wav"),
+    DEATH: preload("res://assets/sfx/death.wav"),
 }
 
 const POOL_SIZE = 8

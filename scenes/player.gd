@@ -218,6 +218,7 @@ func _on_hurtbox_body_entered(body):
 func die():
     is_controllable = false
     $animation.play("death")
+    sfx.play(sfx.DEATH)
     global_camera.shake(0.3, 30, 3)
     yield($animation, "animation_finished")
     var level = get_tree().get_nodes_in_group("level")[0]
