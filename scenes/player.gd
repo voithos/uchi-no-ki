@@ -109,6 +109,7 @@ func _show_shade():
     $shade.position = Vector2.ZERO
     shade_velocity = velocity * SHADE_INITIAL_VEL
     $shade/shape.disabled = false
+    $shade/particles.restart()
     
     shade_button_held_duration = 0.0
     is_shade_button_held = true
