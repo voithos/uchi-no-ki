@@ -11,7 +11,8 @@ func _ready():
 
 func _input(event):
     if event is InputEventKey and event.is_pressed():
-        if event.scancode == KEY_ESCAPE:
+        if event.scancode == KEY_ESCAPE and not OS.has_feature("HTML5"):
+            # Quitting doesn't make sense for web.
             get_tree().quit()
         if event.scancode == KEY_F11:
             OS.window_fullscreen = not OS.window_fullscreen

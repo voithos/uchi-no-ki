@@ -32,6 +32,7 @@ var facing_left = true
 var is_moving = false
 var is_shade_moving = false
 var is_airborne = false
+var was_airborne = false
 var is_fast_falling = false
 
 var is_shade_out = false
@@ -145,6 +146,8 @@ func _show_shade():
     is_shade_button_held = true
 
 func _move_player(delta):
+    was_airborne = is_airborne
+    
     var target_horizontal = 0
     var fall_multiplier = 1.0
     is_moving = false
@@ -181,6 +184,12 @@ func _move_player(delta):
     # Handle shade being out
     var shade_pos = $shade.global_position
     velocity = move_and_slide(velocity, Vector2.UP)
+    
+    if was_airborne and is_on_floor():
+        # Landed.
+        $animation.play("idle")
+        is_airborne = false
+
     if is_shade_out:
         $shade.global_position = shade_pos
 
@@ -214,6 +223,7 @@ func _jump():
     is_fast_falling = false
     velocity.y = -JUMP_VEL
     sfx.play(sfx.JUMP, sfx.EXTRA_QUIET_DB)
+    $animation.play("jump")
     
 func _update_mana(delta):
     # Don't actually change anything if we aren't controllable, but still send the signal.
