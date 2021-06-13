@@ -100,6 +100,7 @@ func _hide_shade():
     is_shade_out = false
     $shade/shape.disabled = true
     
+    sfx.play(sfx.SHADE_RETURN, sfx.QUIET_DB)
     $shade/particles.speed_scale = 3.0
     $shade_tween.interpolate_property($shade, "position", $shade.position, Vector2(0, 0),
            SHADE_RETURN_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN)
@@ -122,6 +123,7 @@ func _show_shade():
     shade_velocity = velocity * SHADE_INITIAL_VEL
     $shade/shape.disabled = false
     $shade/particles.restart()
+    sfx.play(sfx.SHADE, sfx.QUIET_DB)
     
     shade_button_held_duration = 0.0
     is_shade_button_held = true

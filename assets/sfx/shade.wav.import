@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shade.wav-a8c169de9a7e640801499d9112685575.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shade.wav"
+dest_files=[ "res://.import/shade.wav-a8c169de9a7e640801499d9112685575.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

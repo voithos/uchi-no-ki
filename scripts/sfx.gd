@@ -11,6 +11,8 @@ enum {
     GOAL,
     DEATH,
     JUMP,
+    SHADE,
+    SHADE_RETURN,
 }
 
 const SAMPLES = {
@@ -18,6 +20,8 @@ const SAMPLES = {
     GOAL: preload("res://assets/sfx/goal.wav"),
     DEATH: preload("res://assets/sfx/death.wav"),
     JUMP: preload("res://assets/sfx/jump.wav"),
+    SHADE: preload("res://assets/sfx/shade.wav"),
+    SHADE_RETURN: preload("res://assets/sfx/shade_return.wav"),
 }
 
 const POOL_SIZE = 8
