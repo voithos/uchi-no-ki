@@ -45,11 +45,13 @@ rotation = 3.14159
 [node name="gate" parent="level_logic/props/gate_group2" instance=ExtResource( 4 )]
 position = Vector2( -48, 280 )
 rotation = -1.57079
+nodust = true
 
 [node name="gate2" parent="level_logic/props/gate_group2" instance=ExtResource( 4 )]
 position = Vector2( 64, 278 )
 rotation = 1.5708
 is_open = true
+nodust = true
 
 [node name="switch" parent="level_logic/props/gate_group2" instance=ExtResource( 5 )]
 position = Vector2( 80, 208 )
@@ -69,6 +71,7 @@ force_close = true
 position = Vector2( -48, 663 )
 rotation = -1.57079
 is_open = true
+nodust = true
 
 [node name="button2" parent="level_logic/props/gate_group3" instance=ExtResource( 7 )]
 position = Vector2( -2, 400 )
