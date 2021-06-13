@@ -187,8 +187,12 @@ func _move_player(delta):
     
     if was_airborne and is_on_floor():
         # Landed.
-        $animation.play("idle")
         is_airborne = false
+    if !is_airborne:
+        if is_moving:
+            $animation.play("run")
+        else:
+            $animation.play("idle")
 
     if is_shade_out:
         $shade.global_position = shade_pos
