@@ -33,7 +33,12 @@ var is_moving = false
 var is_shade_moving = false
 var is_airborne = false
 var is_fast_falling = false
+
 var is_shade_out = false
+var shade_button_held_duration = 0.0
+var is_shade_button_held = true
+# The threshold after which we treat the button as a "press and hold" instead of a "tap once".
+const SHADE_BUTTON_HELD_THRESHOLD = 0.4
 
 var is_controllable = true
 
@@ -56,9 +61,20 @@ func _physics_process(delta):
 
     if Input.is_action_just_pressed("ki_burst"):
         _toggle_shade()
+    if Input.is_action_just_released("ki_burst"):
+        if shade_button_held_duration >= SHADE_BUTTON_HELD_THRESHOLD:
+            # Button was held; treat as a release
+            _toggle_shade()
+        else:
+            is_shade_button_held = false
 
     if is_shade_out:
         _move_shade(delta)
+        if is_shade_button_held:
+            shade_button_held_duration += delta
+        else:
+            shade_button_held_duration = 0
+
     _move_player(delta)
 
     _update_mana(delta)
@@ -78,6 +94,9 @@ func _hide_shade():
     $shade.position = Vector2.ZERO
     shade_velocity = Vector2.ZERO
     $shade/shape.disabled = true
+    
+    shade_button_held_duration = 0.0
+    is_shade_button_held = true
 
 func _show_shade():
     is_shade_out = true
@@ -85,6 +104,9 @@ func _show_shade():
     $shade.position = Vector2.ZERO
     shade_velocity = velocity * SHADE_INITIAL_VEL
     $shade/shape.disabled = false
+    
+    shade_button_held_duration = 0.0
+    is_shade_button_held = true
 
 func _move_player(delta):
     var target_horizontal = 0

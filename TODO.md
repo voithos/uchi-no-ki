@@ -1,15 +1,8 @@
 # TODO
 
-- Mana restoration node
-- Dash node
-
 ## Levels
 
-- Platforming level
 - Midair shenanigans level
-- ???
-
-## Bugs
 
 ## Stretch goals
 
@@ -26,6 +19,9 @@
 - Icon
 
 ## Super stretch goals
+
+- Mana restoration node
+- Dash node
 
 - Slow down physics while in shade mode?
 - Time left above timed switches
@@ -56,3 +52,5 @@
 - Intro level
 - Button madness / ordering level
 - Timed switches?
+- Platforming level
+- ???
