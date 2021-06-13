@@ -40,6 +40,8 @@ var is_shade_button_held = true
 # The threshold after which we treat the button as a "press and hold" instead of a "tap once".
 const SHADE_BUTTON_HELD_THRESHOLD = 0.4
 
+const SHADE_RETURN_TIME = 0.3
+
 var is_controllable = true
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
@@ -94,11 +96,21 @@ func _toggle_shade():
         _show_shade()
 
 func _hide_shade():
+    is_controllable = false
     is_shade_out = false
+    $shade/shape.disabled = true
+    
+    $shade/particles.speed_scale = 3.0
+    $shade_tween.interpolate_property($shade, "position", $shade.position, Vector2(0, 0),
+           SHADE_RETURN_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN)
+    $shade_tween.start()
+    yield($shade_tween, "tween_completed")
+    $shade/particles.speed_scale = 1.0
+
+    is_controllable = true
     $shade.hide()
     $shade.position = Vector2.ZERO
     shade_velocity = Vector2.ZERO
-    $shade/shape.disabled = true
     
     shade_button_held_duration = 0.0
     is_shade_button_held = true
