@@ -13,6 +13,10 @@ export (float) var timeout = 0
 export (bool) var is_necessary = true
 export (bool) var is_sufficient = false
 
+# If true, this forces all gates open/closed, instead of just toggling them from default state.
+export (bool) var force_open = false
+export (bool) var force_close = false
+
 onready var gate_group = $".."
 
 func _ready():

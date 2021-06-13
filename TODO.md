@@ -1,11 +1,8 @@
 # TODO
 
-## Levels
-
-- Midair shenanigans level
-
 ## Stretch goals
 
+- Level hints
 - Shade particles
 - Shade start / stop animations
 - Level entry / exit animation
@@ -53,3 +50,4 @@
 - Timed switches?
 - Platforming level
 - ???
+- Midair shenanigans level
