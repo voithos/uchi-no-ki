@@ -6,3 +6,4 @@ func _ready():
 
 func _on_area_body_entered(body: Node2D):
     body.win()
+    sfx.play(sfx.GOAL)

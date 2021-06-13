@@ -99,6 +99,7 @@ script = ExtResource( 3 )
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 5
+frame = 1
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )
