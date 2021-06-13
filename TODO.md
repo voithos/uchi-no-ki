@@ -1,23 +1,24 @@
 # TODO
 
-- Initial level
-- Shade particles
-- Shade start / stop animations
-
-- Level entry animation
-- Title screen
+- Mana restoration node
+- Dash node
+- Timed switches?
 
 ## Levels
 
+- Button madness / ordering level
 - Platforming level
-- Button/gate level
-- Small space level
-- Switch too high level
+- Midair shenanigans level
 - ???
 
 ## Bugs
 
 ## Stretch goals
+
+- Shade particles
+- Shade start / stop animations
+- Level entry animation
+- Title screen
 
 - Decorative tiles
 - Character animation
@@ -25,6 +26,8 @@
 - Transitions
 - Camera shake
 - Icon
+
+- Slow down physics for non-soul?
 
 ## == Done ==
 
@@ -49,4 +52,4 @@
 - Acid code
 - End screen
 - Getting squished by gate doesn't work
-
+- Intro level
