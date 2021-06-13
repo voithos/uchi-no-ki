@@ -4,7 +4,7 @@ class_name Player
 var velocity = Vector2.ZERO
 var shade_velocity = Vector2.ZERO
 
-const HORIZONTAL_VEL = 80.0
+const HORIZONTAL_VEL = 75.0
 const HORIZONTAL_ACCEL = 20 # How quickly we accelerate to max speed
 
 const SHADE_HORIZONTAL_VEL = 100.0

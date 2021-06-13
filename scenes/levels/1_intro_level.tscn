@@ -1,20 +1,20 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/gate_group.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gate_group.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=8]
 
-[node name="template" type="Node2D"]
+[node name="level" type="Node2D"]
 
-[node name="level_logic" parent="." instance=ExtResource( 3 )]
-next_level = "res://scenes/end_screen.tscn"
+[node name="level_logic" parent="." instance=ExtResource( 7 )]
+next_level = "res://scenes/levels/2_button_madness.tscn"
 
-[node name="danger_tilemap" parent="level_logic" instance=ExtResource( 10 )]
+[node name="danger_tilemap" parent="level_logic" instance=ExtResource( 8 )]
 
 [node name="tilemap" parent="level_logic" instance=ExtResource( 1 )]
 show_collision = true
@@ -22,27 +22,27 @@ tile_data = PoolIntArray( -262167, 0, 65538, -262166, 0, 65538, -262165, 0, 6553
 
 [node name="props" type="Node2D" parent="level_logic"]
 
-[node name="goal" parent="level_logic/props" instance=ExtResource( 9 )]
+[node name="goal" parent="level_logic/props" instance=ExtResource( 2 )]
 position = Vector2( -26, 430 )
 
-[node name="gate_group" parent="level_logic/props" instance=ExtResource( 6 )]
+[node name="gate_group" parent="level_logic/props" instance=ExtResource( 4 )]
 
-[node name="gate" parent="level_logic/props/gate_group" instance=ExtResource( 4 )]
+[node name="gate" parent="level_logic/props/gate_group" instance=ExtResource( 3 )]
 position = Vector2( -169, 304 )
 
-[node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 5 )]
+[node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 6 )]
 position = Vector2( -79, 256 )
 frame = 0
 
-[node name="gate_group2" parent="level_logic/props" instance=ExtResource( 6 )]
+[node name="gate_group2" parent="level_logic/props" instance=ExtResource( 4 )]
 
-[node name="gate2" parent="level_logic/props/gate_group2" instance=ExtResource( 4 )]
+[node name="gate2" parent="level_logic/props/gate_group2" instance=ExtResource( 3 )]
 position = Vector2( -109, 400 )
 
-[node name="switch2" parent="level_logic/props/gate_group2" instance=ExtResource( 5 )]
+[node name="switch2" parent="level_logic/props/gate_group2" instance=ExtResource( 6 )]
 position = Vector2( -183, 368 )
 rotation = -3.14159
 frame = 0
 
-[node name="player" parent="level_logic" instance=ExtResource( 2 )]
+[node name="player" parent="level_logic" instance=ExtResource( 5 )]
 position = Vector2( 454, 192 )

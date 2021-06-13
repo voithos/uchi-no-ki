@@ -1,6 +1,9 @@
 extends Sprite
 
 export var is_open = false
+export var is_latchable = false # "Latches" in a stuck position once it is engaged / disengaged
+var is_latched = false
+
 var next_anim = ""
 var last_anim = ""
 
@@ -22,14 +25,18 @@ func _input(event):
     pass
 
 func open():
-    if !is_open:
+    if !is_open and !is_latched:
         _queue_anim("open")
         is_open = true
+        if is_latchable:
+            is_latched = true
 
 func close():
-    if is_open:
+    if is_open and !is_latched:
         _queue_anim("close")
         is_open = false
+        if is_latchable:
+            is_latched = true
 
 func _queue_anim(anim):
     if !$animation.is_playing():
