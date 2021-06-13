@@ -9,6 +9,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
@@ -50,6 +51,7 @@ tracks/2/keys = {
 resource_name = "idle"
 length = 0.625
 loop = true
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
@@ -90,6 +92,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "teleport"
 length = 0.6
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
@@ -151,8 +154,8 @@ collision_layer = 19
 script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 6 )
-hframes = 15
+texture = ExtResource( 1 )
+hframes = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )

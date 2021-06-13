@@ -6,7 +6,6 @@
 - Title screen
 
 - Character animation
-- Transitions
 - Icon
 - Decorative tiles
 
@@ -51,3 +50,4 @@
 - Shade start / stop animations
 - Level entry / exit animation
 - Sound effects
+- Transitions

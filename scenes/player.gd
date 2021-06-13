@@ -64,6 +64,9 @@ func _ready():
     $animation.seek(0, true)
     $animation.stop()
 
+    # Wait a little bit extra to allow the transition to complete fading in
+    yield(get_tree().create_timer(0.2), "timeout")
+    
     $animation.play("teleport")
     sfx.play(sfx.TELEPORT)
     yield($animation, "animation_finished")
