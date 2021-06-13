@@ -4,6 +4,8 @@ export var is_open = false
 export var is_latchable = false # "Latches" in a stuck position once it is engaged / disengaged
 var is_latched = false
 
+onready var default_state = is_open
+
 var next_anim = ""
 var last_anim = ""
 

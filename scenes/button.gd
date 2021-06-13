@@ -8,6 +8,7 @@ export (bool) var is_sufficient = false
 var is_on = false
 
 onready var gate_group = $".."
+var body_count = 0
 
 func _ready():
     add_to_group("switches")
@@ -22,7 +23,7 @@ func open():
         $animation.play("switch")
         is_on = true
     gate_group.on_switch_toggle()
-        
+
 func close():
     if is_on:
         $animation.play_backwards("switch")
@@ -30,10 +31,14 @@ func close():
     gate_group.on_switch_toggle()
 
 func _on_area_body_entered(body):
-    open()
+    body_count += 1
+    if body_count > 0:
+        open()
 
 func _on_area_body_exited(body):
-    close()
+    body_count -= 1
+    if body_count <= 0:
+        close()
 
 func _add_to_gate_group():
     gate_group.add_switch(self)

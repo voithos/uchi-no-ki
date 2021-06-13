@@ -37,13 +37,14 @@ func open():
         $animation.play("switch")
         is_on = true
         gate_group.on_switch_toggle()
-        
-        $timer.wait_time = timeout
-        $timer.one_shot = true
-        $timer.start()
-        yield($timer, "timeout")
-        close()
-        
+
+        if is_timed:
+            $timer.wait_time = timeout
+            $timer.one_shot = true
+            $timer.start()
+            yield($timer, "timeout")
+            close()
+            
 func close():
     if is_on:
         $animation.play_backwards("switch")
