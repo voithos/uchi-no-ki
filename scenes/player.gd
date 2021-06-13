@@ -182,6 +182,7 @@ func _jump():
     is_airborne = true
     is_fast_falling = false
     velocity.y = -JUMP_VEL
+    sfx.play(sfx.JUMP, sfx.EXTRA_QUIET_DB)
     
 func _update_mana(delta):
     if is_shade_out:

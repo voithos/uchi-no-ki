@@ -4,17 +4,20 @@ extends Node
 
 const SFX_DB = -8.0
 const QUIET_DB = -12.0
+const EXTRA_QUIET_DB = -20.0
 
 enum {
     WALK,
     GOAL,
     DEATH,
+    JUMP,
 }
 
 const SAMPLES = {
     WALK: preload("res://assets/sfx/walk.wav"),
     GOAL: preload("res://assets/sfx/goal.wav"),
     DEATH: preload("res://assets/sfx/death.wav"),
+    JUMP: preload("res://assets/sfx/jump.wav"),
 }
 
 const POOL_SIZE = 8
