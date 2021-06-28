@@ -1,20 +1,23 @@
 # TODO
 
-## Stretch goals
-
-- Character animation
 - Icon
 - Decorative tiles
 
-## Super stretch goals
-
 - Mana restoration node
 - Dash node
-
 - Slow down physics while in shade mode?
-- Time left above timed switches
+- Dash-into-self burst mechanic
 
-- STORY
+- Time left above timed switches (radial progress?)
+
+- STORY :D
+
+- Improve title art
+- Add level saving feature
+- Add support for controller
+- Improve tutorial approach?
+
+- More levels?
 
 ## == Done ==
 
@@ -52,3 +55,5 @@
 - Transitions
 - Title screen
 - Level hints
+- Character animation
+- Fix the bridge level
