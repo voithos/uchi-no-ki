@@ -16,6 +16,7 @@
 - Add level saving feature
 - Add support for controller
 - Improve tutorial approach?
+- Add ability to start level with player facing right
 
 - More levels?
 
