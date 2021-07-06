@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Uchi no Ki"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/levels/1_intro_level.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -31,6 +31,7 @@ screen="*res://scripts/screen.gd"
 sfx="*res://scripts/sfx.gd"
 global_camera="*res://scripts/global_camera.gd"
 checkpoint_store="*res://scripts/checkpoint_store.gd"
+time_warp="*res://scripts/time_warp.gd"
 
 [display]
 

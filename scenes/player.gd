@@ -25,7 +25,6 @@ const MAX_MANA = 100.0
 var mana = MAX_MANA
 const MANA_DEPLETION = 70 # Rate of depletion
 const MANA_GAIN = 140 # Rate of gain when not in shade
-# TODO: Add distance factor? Or maybe elasticity?
 signal mana_changed
 
 var facing_left = true
@@ -52,6 +51,7 @@ onready var camera = $shade/player_camera
 
 func _ready():
     add_to_group("player")
+    time_warp.set_camera(camera)
     
     $shade.hide()
     $shade.position = Vector2.ZERO
@@ -113,6 +113,8 @@ func _toggle_shade():
         _show_shade()
 
 func _hide_shade():
+    time_warp.speedup()
+    
     is_controllable = false
     is_shade_out = false
     $shade/shape.disabled = true
@@ -134,6 +136,8 @@ func _hide_shade():
     is_shade_button_held = true
 
 func _show_shade():
+    time_warp.slowdown()
+    
     is_shade_out = true
     $shade.show()
     $shade.position = Vector2.ZERO
@@ -157,7 +161,6 @@ func _move_player(delta):
             target_horizontal -= HORIZONTAL_VEL
             is_moving = true
         if Input.is_action_pressed("move_right"):
-            
             target_horizontal += HORIZONTAL_VEL
             is_moving = true
 
@@ -176,14 +179,17 @@ func _move_player(delta):
         if is_fast_falling:
             fall_multiplier = FAST_FALL_MULTIPLIER
 
-    velocity.y = min(TERM_VEL, velocity.y + GRAVITY * fall_multiplier)
+    # TODO: This doesn't work properly because it doesn't take into account the previous velocity.
+    velocity.y = min(TERM_VEL, velocity.y + GRAVITY * fall_multiplier * time_warp.time_scale)
 
     # Lerp horizontal movement
-    velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta)
+    velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta * time_warp.time_scale)
 
-    # Handle shade being out
+    # Handle shade being out and time scaling
     var shade_pos = $shade.global_position
-    velocity = move_and_slide(velocity, Vector2.UP)
+    var time_scaled_velocity = velocity * time_warp.time_scale
+    time_scaled_velocity = move_and_slide(time_scaled_velocity, Vector2.UP)
+    velocity = time_scaled_velocity / time_warp.time_scale
     
     if was_airborne and is_on_floor():
         # Landed.

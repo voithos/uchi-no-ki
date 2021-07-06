@@ -91,7 +91,7 @@ tracks/2/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "jump"
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -130,7 +130,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "run"
 length = 0.64
 loop = true
@@ -172,7 +172,7 @@ tracks/2/keys = {
 "values": [ 0, 7 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "teleport"
 length = 0.6
 step = 0.04
@@ -213,10 +213,10 @@ tracks/2/keys = {
 "values": [ 0, 14 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4, 7 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=7]
 lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 3.0
@@ -229,7 +229,7 @@ orbit_velocity_random = 0.0
 damping = 10.0
 color = Color( 0.886275, 0.952941, 0.894118, 1 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=8]
 radius = 4.0
 
 [node name="player" type="KinematicBody2D"]
@@ -244,9 +244,9 @@ frame = 7
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )
 anims/idle = SubResource( 2 )
-anims/jump = SubResource( 7 )
-anims/run = SubResource( 8 )
-anims/teleport = SubResource( 6 )
+anims/jump = SubResource( 3 )
+anims/run = SubResource( 4 )
+anims/teleport = SubResource( 5 )
 
 [node name="shape" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -5, -2, -5, 8, 4, 8, 4, -2, 4, -3, 3, -3, 3, -7, -3, -7, -3, -3, -4, -3, -4, -2 )
@@ -257,10 +257,10 @@ collision_mask = 8
 
 [node name="shape" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( 0, 1 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="shade" type="KinematicBody2D" parent="."]
-position = Vector2( -12, 0 )
+visible = false
 collision_layer = 6
 collision_mask = 4
 
@@ -268,21 +268,22 @@ collision_mask = 4
 amount = 25
 lifetime = 0.7
 local_coords = false
-process_material = SubResource( 5 )
+process_material = SubResource( 7 )
 
 [node name="sprite" type="Sprite" parent="shade"]
 texture = ExtResource( 4 )
 
 [node name="shape" type="CollisionShape2D" parent="shade"]
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 
 [node name="player_camera" type="Camera2D" parent="shade"]
-position = Vector2( 12, 0 )
 current = true
 smoothing_enabled = true
 script = ExtResource( 2 )
 
 [node name="shade_tween" type="Tween" parent="."]
+
+[node name="time_tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
