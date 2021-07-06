@@ -17,6 +17,7 @@ enum {
     BUTTON,
     SWITCH,
     CHECKPOINT,
+    ORB_SHATTER,
 }
 
 const SAMPLES = {
@@ -30,6 +31,7 @@ const SAMPLES = {
     BUTTON: preload("res://assets/sfx/switch.wav"), # The switch sound is better
     SWITCH: preload("res://assets/sfx/switch.wav"),
     CHECKPOINT: preload("res://assets/sfx/checkpoint.wav"),
+    ORB_SHATTER: preload("res://assets/sfx/shatter.wav"),
 }
 
 const POOL_SIZE = 8

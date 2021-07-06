@@ -10,6 +10,7 @@
 ## Stretch
 
 - Add support for controller
+- Add number of deaths counter?
 
 ## Polish
 
@@ -20,7 +21,7 @@
 - Improve tutorial approach (more tied in with story?)
 
 - Icon
-- Minor story / cutscene
+- Minor story / cutscene?
 - Decorative tile layer
 
 ## == Done ==
