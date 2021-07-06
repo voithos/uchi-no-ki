@@ -1,6 +1,5 @@
 # TODO
 
-- Mana restoration node
 - Dash node
 - Dash-into-self burst mechanic
 
@@ -63,3 +62,4 @@
 - Character animation
 - Fix the bridge level
 - Slow down physics while in shade mode?
+- Mana restoration node
