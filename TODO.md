@@ -1,24 +1,27 @@
 # TODO
 
-- Icon
-- Decorative tiles
-
 - Mana restoration node
 - Dash node
-- Slow down physics while in shade mode?
 - Dash-into-self burst mechanic
 
 - Time left above timed switches (radial progress?)
-
-- STORY :D
-
-- Improve title art
 - Add level saving feature
-- Add support for controller
-- Improve tutorial approach?
-- Add ability to start level with player facing right
 
-- More levels?
+## Stretch
+
+- Add support for controller
+
+## Polish
+
+- Burst of particles when shade comes out
+- Slow down character animation while in shade (or use a different animation)
+- Add ability to start level with player facing right
+- Improve title art
+- Improve tutorial approach (more tied in with story?)
+
+- Icon
+- Minor story / cutscene
+- Decorative tile layer
 
 ## == Done ==
 
@@ -58,3 +61,4 @@
 - Level hints
 - Character animation
 - Fix the bridge level
+- Slow down physics while in shade mode?

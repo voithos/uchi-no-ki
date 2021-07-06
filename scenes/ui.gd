@@ -11,3 +11,6 @@ func setup_listeners():
 
 func on_mana_changed(ratio):
     $mana.value = ratio * 100
+
+func process(delta):
+    pass

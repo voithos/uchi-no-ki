@@ -1,6 +1,6 @@
 extends Node
 
-const SLOW_TIME_SCALE = 0.05
+const SLOW_TIME_SCALE = 0.07
 const SLOWDOWN_TIME = 0.4
 var time_scale = 1.0
 

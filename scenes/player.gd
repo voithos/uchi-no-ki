@@ -8,11 +8,11 @@ const HORIZONTAL_VEL = 75.0
 const HORIZONTAL_ACCEL = 20 # How quickly we accelerate to max speed
 
 const SHADE_HORIZONTAL_VEL = 100.0
-const SHADE_HORIZONTAL_ACCEL = 4
+const SHADE_HORIZONTAL_ACCEL = 6
 const SHADE_VERTICAL_VEL = 70.0
-const SHADE_VERTICAL_ACCEL = 4
+const SHADE_VERTICAL_ACCEL = 6
 
-const SHADE_INITIAL_VEL = 0.7 # Percent of char's velocity
+const SHADE_INITIAL_VEL = 1.5 # Percent of char's velocity
 
 const GRAVITY = 6.0
 const JUMP_VEL = 160
@@ -179,7 +179,6 @@ func _move_player(delta):
         if is_fast_falling:
             fall_multiplier = FAST_FALL_MULTIPLIER
 
-    # TODO: This doesn't work properly because it doesn't take into account the previous velocity.
     velocity.y = min(TERM_VEL, velocity.y + GRAVITY * fall_multiplier * time_warp.time_scale)
 
     # Lerp horizontal movement
@@ -239,11 +238,17 @@ func _update_mana(delta):
     # Don't actually change anything if we aren't controllable, but still send the signal.
     if is_controllable:
         if is_shade_out:
-            mana = max(0, mana - MANA_DEPLETION * delta)
-            if mana == 0:
-                _toggle_shade()
+            set_mana(mana - MANA_DEPLETION * delta)
         else:
-            mana = min(MAX_MANA, mana + MANA_GAIN * delta)
+            set_mana(mana + MANA_GAIN * delta)
+    else:
+        emit_signal("mana_changed", mana / MAX_MANA)
+
+# Sets mana, handling 0 and max range automatically. Emits signal.
+func set_mana(m):
+    mana = min(max(0, m), MAX_MANA)
+    if mana == 0:
+        _toggle_shade()
     emit_signal("mana_changed", mana / MAX_MANA)
 
 func _update_sprite_flip():
@@ -273,7 +278,7 @@ func die():
     is_controllable = false
     $animation.play("death")
     sfx.play(sfx.DEATH)
-    global_camera.shake(0.3, 30, 3)
+    global_camera.shake(0.5, 30, 3)
     yield($animation, "animation_finished")
     var level = get_tree().get_nodes_in_group("level")[0]
     level.begin_reset_transition()

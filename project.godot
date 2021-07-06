@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Uchi no Ki"
-run/main_scene="res://scenes/levels/1_intro_level.tscn"
+run/main_scene="res://scenes/demo.tscn"
 config/icon="res://icon.png"
 
 [autoload]
