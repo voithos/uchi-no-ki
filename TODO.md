@@ -1,23 +1,29 @@
 # TODO
 
+- Dash effect for shade
 - Dash node
 - Dash-into-self burst mechanic
 
 - Time left above timed switches (radial progress?)
 - Add level saving feature
 
+- Moar levels
+
 ## Stretch
 
 - Add support for controller
 - Add number of deaths counter?
+- Add "strawberries"?
 
 ## Polish
 
 - Burst of particles when shade comes out
 - Slow down character animation while in shade (or use a different animation)
 - Add ability to start level with player facing right
+- Shockwave effect during dash
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
+- Squash and stretch?
 
 - Icon
 - Minor story / cutscene?
