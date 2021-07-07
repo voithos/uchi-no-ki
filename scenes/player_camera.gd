@@ -49,6 +49,7 @@ func _process(delta):
         # Clear our offset once shaking is done.
         offset = offset - _previous_offset
         _shaking = false
+        _previous_offset = Vector2.ZERO
 
 # Begin the screenshake effect.
 #   duration: The amount of time to shake for, in seconds.
@@ -62,8 +63,3 @@ func shake(duration, frequency, amplitude):
     _amplitude = amplitude
     _previous_x = rand_range(-1.0, 1.0)
     _previous_y = rand_range(-1.0, 1.0)
-    
-    # Clear the offset by subtracting our previous offset so that we don't interfere with
-    # other effects that may be ongoing.
-    offset = offset - _previous_offset
-    _previous_offset = Vector2(0, 0)
