@@ -165,6 +165,7 @@ func shade_dash(dir: Vector2):
     dash_direction = dir.normalized()
 
     global_camera.shake(DASH_DURATION * 0.6, 30, 2)
+    sfx.play(sfx.SHADE_DASH, sfx.SFX_DB)
 
 func _animate_shade_dash(delta):
     if !is_dashing:

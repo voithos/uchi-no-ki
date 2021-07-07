@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shade_dash.wav-33d27b5aee23d9842d5223e65911beec.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shade_dash.wav"
+dest_files=[ "res://.import/shade_dash.wav-33d27b5aee23d9842d5223e65911beec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

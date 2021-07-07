@@ -5,6 +5,7 @@ extends Node
 const SFX_DB = -8.0
 const QUIET_DB = -12.0
 const EXTRA_QUIET_DB = -20.0
+const EVEN_QUIETER_DB = -25.0
 
 enum {
     WALK,
@@ -18,6 +19,7 @@ enum {
     SWITCH,
     CHECKPOINT,
     ORB_SHATTER,
+    SHADE_DASH,
 }
 
 const SAMPLES = {
@@ -32,6 +34,7 @@ const SAMPLES = {
     SWITCH: preload("res://assets/sfx/switch.wav"),
     CHECKPOINT: preload("res://assets/sfx/checkpoint.wav"),
     ORB_SHATTER: preload("res://assets/sfx/shatter.wav"),
+    SHADE_DASH: preload("res://assets/sfx/shade_dash.wav"),
 }
 
 const POOL_SIZE = 8
