@@ -38,11 +38,19 @@ var is_shade_out = false
 var shade_button_held_duration = 0.0
 var is_shade_button_held = true
 # The threshold after which we treat the button as a "press and hold" instead of a "tap once".
+# TODO: Instead of this, just make the player hold the button down.
 const SHADE_BUTTON_HELD_THRESHOLD = 0.4
 
 const SHADE_RETURN_TIME = 0.3
 
 var is_controllable = true
+
+# Shade dashing
+var is_dashing = false
+const DASH_DURATION = 0.15 # seconds
+const DASH_VEL = 200
+var dash_timer = 0.0
+var dash_direction = Vector2.ZERO
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
@@ -81,7 +89,8 @@ func _maybe_jump_to_checkpoint():
 func _physics_process(delta):
     # Need to update mana even when uncontrolled in order to update the UI.
     _update_mana(delta)
-    
+    _animate_shade_dash(delta)
+
     if !is_controllable:
         return
 
@@ -149,6 +158,25 @@ func _show_shade():
     shade_button_held_duration = 0.0
     is_shade_button_held = true
 
+func shade_dash(dir: Vector2):
+    is_controllable = false
+    is_dashing = true
+    dash_timer = 0.0
+    dash_direction = dir.normalized()
+
+    global_camera.shake(DASH_DURATION * 0.6, 30, 2)
+
+func _animate_shade_dash(delta):
+    if !is_dashing:
+        return
+    shade_velocity = dash_direction * DASH_VEL
+    shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
+    
+    dash_timer += delta
+    if dash_timer >= DASH_DURATION:
+        is_controllable = true
+        is_dashing = false
+    
 func _move_player(delta):
     was_airborne = is_airborne
     
@@ -225,6 +253,8 @@ func _move_shade(delta):
     shade_velocity.x = lerp(shade_velocity.x, target_horizontal, SHADE_HORIZONTAL_ACCEL * delta)
     shade_velocity.y = lerp(shade_velocity.y, target_vertical, SHADE_VERTICAL_ACCEL * delta)
 
+    if Input.is_action_just_pressed("debug"):
+        shade_dash(shade_velocity)
     shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
 
 func _jump():

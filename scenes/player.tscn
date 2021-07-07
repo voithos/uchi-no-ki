@@ -266,6 +266,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 6 )
 
 [node name="shade" type="KinematicBody2D" parent="."]
+visible = false
 collision_layer = 6
 collision_mask = 4
 
