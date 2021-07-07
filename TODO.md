@@ -1,6 +1,5 @@
 # TODO
 
-- Dash effect for shade
 - Dash node
 - Dash-into-self burst mechanic
 
@@ -69,3 +68,4 @@
 - Fix the bridge level
 - Slow down physics while in shade mode?
 - Mana restoration node
+- Dash effect for shade
