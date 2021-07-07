@@ -64,6 +64,7 @@ func _ready():
     $shade.hide()
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
+    $shade/aftereffect.emitting = false
     
     _maybe_jump_to_checkpoint()
     
@@ -166,6 +167,12 @@ func shade_dash(dir: Vector2):
 
     global_camera.shake(DASH_DURATION * 0.6, 30, 2)
     sfx.play(sfx.SHADE_DASH, sfx.SFX_DB)
+    
+    if facing_left:
+        $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage.png")
+    else:
+        $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage_flipped.png")
+    $shade/aftereffect.restart()
 
 func _animate_shade_dash(delta):
     if !is_dashing:
@@ -200,6 +207,7 @@ func _move_player(delta):
             facing_left = target_horizontal < 0
 
         # Apply gravity and fast falling
+        # TODO: Have the shade trigger fast falling upon return?
         if is_airborne and Input.is_action_just_released("move_up"):
             is_fast_falling = true
             if velocity.y < 0:

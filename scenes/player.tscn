@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/player/idle.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player_camera.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/player/teleport.png" type="Texture" id=6]
 [ext_resource path="res://assets/player/jump.png" type="Texture" id=7]
 [ext_resource path="res://assets/player/run.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/shade_afterimage.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -216,6 +217,19 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4, 7 )
 
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 1, 1, 1, 0.85098, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 13 )
+
 [sub_resource type="Gradient" id=9]
 colors = PoolColorArray( 0.886275, 0.952941, 0.894118, 1, 0.886275, 0.952941, 0.894118, 0 )
 
@@ -266,9 +280,17 @@ position = Vector2( 0, 1 )
 shape = SubResource( 6 )
 
 [node name="shade" type="KinematicBody2D" parent="."]
-visible = false
 collision_layer = 6
 collision_mask = 4
+
+[node name="aftereffect" type="Particles2D" parent="shade"]
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+local_coords = false
+process_material = SubResource( 11 )
+texture = ExtResource( 9 )
 
 [node name="particles" type="Particles2D" parent="shade"]
 amount = 25
