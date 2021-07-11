@@ -120,6 +120,10 @@ func _physics_process(delta):
     _walk_sfx(delta)
 
 func _toggle_shade():
+    # Can't toggle shade if dashing.
+    if is_dashing or is_about_to_dash:
+        return
+        
     if is_shade_out:
         _hide_shade()
     else:
@@ -284,8 +288,6 @@ func _move_shade(delta):
         shade_velocity.x = lerp(shade_velocity.x, target_horizontal, SHADE_HORIZONTAL_ACCEL * delta)
         shade_velocity.y = lerp(shade_velocity.y, target_vertical, SHADE_VERTICAL_ACCEL * delta)
 
-    if Input.is_action_just_pressed("debug"):
-        shade_dash(shade_velocity)
     shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
 
 func _jump():
