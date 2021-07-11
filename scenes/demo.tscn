@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/orb.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=12]
 
 [node name="demo" type="Node2D"]
 
@@ -53,6 +54,9 @@ rotation = 3.14159
 
 [node name="orb" parent="level_logic/props" instance=ExtResource( 11 )]
 position = Vector2( 119.678, 51.6188 )
+
+[node name="crystal" parent="level_logic/props" instance=ExtResource( 12 )]
+position = Vector2( 97.5807, 12.3744 )
 
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
 position = Vector2( 5, 47 )
