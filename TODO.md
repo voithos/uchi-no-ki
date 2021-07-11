@@ -2,6 +2,10 @@
 
 - Dash-into-self burst mechanic
 
+- Spikes
+- Shade death
+- Timed danger gates
+- Timed breakable platforms
 - Time left above timed switches (radial progress?)
 - Level progress saving feature
 - Level selection UI
@@ -14,17 +18,26 @@
 - "Strawberries" menu ui
 
 ## Levels
-- 
+
+- Level that introduces the mana orb
+- Level that introduces the dash crystal
+- Level that introduces the dash-to-self burst
+- Level that requires precision midair dashes + platforming
+
+- Fix drop-down section in midair-shenanigans
 
 ## Polish
 
 - Burst of particles when shade comes out
 - Slow down character animation while in shade (or use a different animation)
 - Ability to start level with player facing right
+- Stagger the up/down of the orbs and crystal floatations
 - Shockwave effect during dash
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
 - Squash and stretch
+
+- Use AudioStreamPlayer2D for certain sound effects
 
 - Icon
 - Minor story / cutscene

@@ -68,6 +68,7 @@ func _ready():
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
     $shade/aftereffect.emitting = false
+    $shade/aftereffect.lifetime = DASH_DURATION + 0.15
     
     _maybe_jump_to_checkpoint()
     
