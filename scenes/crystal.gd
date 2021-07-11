@@ -7,10 +7,9 @@ func _ready():
 
 func _on_area_body_entered(body):
     var player = get_tree().get_nodes_in_group("player")[0]
-    player.shade_dash(Vector2.UP)
+    player.schedule_shade_dash()
 
     global_camera.shake(0.15, 30, 3)
-
     
     $animation.play("break")
     $area.set_deferred("monitoring", false)

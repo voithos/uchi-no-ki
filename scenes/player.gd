@@ -51,6 +51,9 @@ const DASH_DURATION = 0.15 # seconds
 const DASH_VEL = 200
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
+var is_about_to_dash = false
+var dash_start_timer = 0.0
+const DASH_START_DELAY = 0.05 # seconds
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
@@ -149,6 +152,8 @@ func _show_shade():
     time_warp.slowdown()
     
     is_shade_out = true
+    is_about_to_dash = false
+
     $shade.show()
     $shade.position = Vector2.ZERO
     shade_velocity = velocity * SHADE_INITIAL_VEL
@@ -159,7 +164,12 @@ func _show_shade():
     shade_button_held_duration = 0.0
     is_shade_button_held = true
 
+func schedule_shade_dash():
+    is_about_to_dash = true
+    dash_start_timer = 0.0
+
 func shade_dash(dir: Vector2):
+    is_about_to_dash = false
     is_controllable = false
     is_dashing = true
     dash_timer = 0.0
@@ -258,9 +268,21 @@ func _move_shade(delta):
     if target_horizontal != 0:
         facing_left = target_horizontal < 0
 
-    # No gravity for shade
-    shade_velocity.x = lerp(shade_velocity.x, target_horizontal, SHADE_HORIZONTAL_ACCEL * delta)
-    shade_velocity.y = lerp(shade_velocity.y, target_vertical, SHADE_VERTICAL_ACCEL * delta)
+    if is_about_to_dash:
+        # About to dash, so don't apply the target vel.
+        dash_start_timer += delta
+        if dash_start_timer >= DASH_START_DELAY:
+            # Use the shade's velocity by default, unless the player is holding
+            # down directions, in which case they take priority.
+            var dash_input = shade_velocity
+            if target_horizontal != 0 or target_vertical != 0:
+                dash_input = Vector2(target_horizontal, target_vertical)
+            shade_dash(dash_input)
+    else:
+        # Main movement.
+        # No gravity for shade
+        shade_velocity.x = lerp(shade_velocity.x, target_horizontal, SHADE_HORIZONTAL_ACCEL * delta)
+        shade_velocity.y = lerp(shade_velocity.y, target_vertical, SHADE_VERTICAL_ACCEL * delta)
 
     if Input.is_action_just_pressed("debug"):
         shade_dash(shade_velocity)
