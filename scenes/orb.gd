@@ -8,7 +8,7 @@ func _ready():
 func _on_area_body_entered(body):
     var player = get_tree().get_nodes_in_group("player")[0]
     player.set_mana(player.MAX_MANA)
-    global_camera.shake(0.15, 30, 3)
+    global_camera.shake(0.15, 30, 2.5)
     sfx.play(sfx.ORB_SHATTER, sfx.EVEN_QUIETER_DB)
     
     $animation.play("break")

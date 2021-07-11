@@ -9,7 +9,7 @@ func _on_area_body_entered(body):
     var player = get_tree().get_nodes_in_group("player")[0]
     player.schedule_shade_dash()
     
-    global_camera.shake(0.15, 30, 3)
+    global_camera.shake(0.1, 30, 2)
     # Sfx doesn't sound good here since the dash already has sfx.
     #sfx.play(sfx.ORB_SHATTER, sfx.EVEN_QUIETER_DB)
     

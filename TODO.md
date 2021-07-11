@@ -1,31 +1,33 @@
 # TODO
 
-- Dash node
 - Dash-into-self burst mechanic
 
 - Time left above timed switches (radial progress?)
-- Add level saving feature
+- Level progress saving feature
+- Level selection UI
 
-- Moar levels
+- Support for controller
+- Number of deaths counter
+- Number of deaths UI
+- "Strawberries" art
+- "Strawberries" in-level logic + sfx
+- "Strawberries" menu ui
 
-## Stretch
-
-- Add support for controller
-- Add number of deaths counter?
-- Add "strawberries"?
+## Levels
+- 
 
 ## Polish
 
 - Burst of particles when shade comes out
 - Slow down character animation while in shade (or use a different animation)
-- Add ability to start level with player facing right
+- Ability to start level with player facing right
 - Shockwave effect during dash
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
-- Squash and stretch?
+- Squash and stretch
 
 - Icon
-- Minor story / cutscene?
+- Minor story / cutscene
 - Decorative tile layer
 
 ## == Done ==
@@ -69,3 +71,4 @@
 - Slow down physics while in shade mode?
 - Mana restoration node
 - Dash effect for shade
+- Dash node

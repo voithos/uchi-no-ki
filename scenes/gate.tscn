@@ -100,7 +100,7 @@ tracks/6/keys = {
 "values": [ 17 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "close_nodust"
 step = 0.04
 tracks/0/type = "value"
@@ -188,7 +188,7 @@ tracks/6/keys = {
 "values": [ 17 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -275,7 +275,7 @@ tracks/6/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "open_nodust"
 step = 0.04
 tracks/0/type = "value"
@@ -363,7 +363,7 @@ tracks/6/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8, 4 )
 
 [node name="gate" type="Sprite"]
@@ -384,9 +384,9 @@ shape = SubResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/close = SubResource( 3 )
-anims/close_nodust = SubResource( 6 )
-anims/open = SubResource( 4 )
-anims/open_nodust = SubResource( 7 )
+anims/close_nodust = SubResource( 4 )
+anims/open = SubResource( 5 )
+anims/open_nodust = SubResource( 6 )
 
 [node name="hitbox" type="Area2D" parent="."]
 monitoring = false
@@ -396,4 +396,4 @@ collision_mask = 0
 
 [node name="hitbox_shape" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( 0, 20 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )

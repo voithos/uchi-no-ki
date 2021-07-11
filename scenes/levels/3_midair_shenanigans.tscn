@@ -36,9 +36,11 @@ is_latchable = true
 [node name="button" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
 position = Vector2( 115, 128 )
 
-[node name="button2" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
-position = Vector2( 115, 32 )
+[node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 5 )]
+position = Vector2( 116, 32 )
 rotation = 3.14159
+is_timed = true
+timeout = 1.0
 
 [node name="gate_group2" parent="level_logic/props" instance=ExtResource( 6 )]
 
