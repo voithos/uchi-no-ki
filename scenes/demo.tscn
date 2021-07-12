@@ -58,5 +58,14 @@ position = Vector2( 119.678, 51.6188 )
 [node name="crystal" parent="level_logic/props" instance=ExtResource( 12 )]
 position = Vector2( 97.5807, 12.3744 )
 
+[node name="crystal2" parent="level_logic/props" instance=ExtResource( 12 )]
+position = Vector2( 97.5788, -57.1694 )
+
+[node name="crystal3" parent="level_logic/props" instance=ExtResource( 12 )]
+position = Vector2( 157.35, -55.2051 )
+
+[node name="crystal4" parent="level_logic/props" instance=ExtResource( 12 )]
+position = Vector2( 127.043, -95.6138 )
+
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
 position = Vector2( 5, 47 )

@@ -182,6 +182,9 @@ func shade_dash(dir: Vector2):
 
     global_camera.shake(DASH_DURATION * 0.6, 30, 2)
     sfx.play(sfx.SHADE_DASH, sfx.SFX_DB)
+    # TODO: Maybe this effect should only happen for the dash-into-self mechanic?
+    $shockwave.global_position = $shade.global_position
+    $shockwave.shockwave()
     
     if facing_left:
         $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage.png")

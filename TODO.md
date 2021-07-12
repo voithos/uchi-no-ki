@@ -32,7 +32,6 @@
 - Slow down character animation while in shade (or use a different animation)
 - Ability to start level with player facing right
 - Stagger the up/down of the orbs and crystal floatations
-- Shockwave effect during dash
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
 - Squash and stretch
@@ -85,3 +84,4 @@
 - Mana restoration node
 - Dash effect for shade
 - Dash node
+- Shockwave effect during dash

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/player/idle.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player_camera.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/player/jump.png" type="Texture" id=7]
 [ext_resource path="res://assets/player/run.png" type="Texture" id=8]
 [ext_resource path="res://assets/player/shade_afterimage.png" type="Texture" id=9]
+[ext_resource path="res://scenes/shockwave.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -308,6 +309,12 @@ shape = SubResource( 8 )
 current = true
 smoothing_enabled = true
 script = ExtResource( 2 )
+
+[node name="shockwave" parent="." instance=ExtResource( 10 )]
+speed = 2.0
+acceleration = 1.0
+max_size = 1.0
+mask_contribution = 0.1
 
 [node name="shade_tween" type="Tween" parent="."]
 
