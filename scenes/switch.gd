@@ -21,6 +21,8 @@ onready var gate_group = $".."
 
 func _ready():
     add_to_group("switches")
+    # Rotate the timer so that it's always upright.
+    $switch_timer.rect_rotation = rotation_degrees
     if is_timed:
         assert(timeout != 0)
         texture = preload("res://assets/props/timed_switch.png")

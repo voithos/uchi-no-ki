@@ -7,6 +7,7 @@
 [node name="switch_timer" type="TextureProgress"]
 margin_right = 16.0
 margin_bottom = 16.0
+rect_pivot_offset = Vector2( 8, 8 )
 step = 6.25
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )

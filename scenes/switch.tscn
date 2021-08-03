@@ -44,9 +44,9 @@ shape = SubResource( 2 )
 [node name="timer" type="Timer" parent="."]
 
 [node name="switch_timer" parent="." instance=ExtResource( 3 )]
-margin_left = -8.13543
-margin_top = -23.6622
-margin_right = 7.86457
-margin_bottom = -7.6622
+margin_left = -8.0
+margin_top = -22.0
+margin_right = 8.0
+margin_bottom = -6.0
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

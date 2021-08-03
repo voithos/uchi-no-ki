@@ -43,7 +43,8 @@ position = Vector2( 63, 75 )
 rotation = -1.5708
 
 [node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 5 )]
-position = Vector2( 34, 48 )
+position = Vector2( 26, 48 )
+rotation = 6.28318
 frame = 0
 is_toggleable = true
 is_timed = true
