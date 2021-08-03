@@ -1,10 +1,9 @@
 # TODO
 
-- Spikes
-- Shade death
+- Shade death?
+- Time left above timed switches (radial progress?)
 - Timed danger gates
 - Timed breakable platforms
-- Time left above timed switches (radial progress?)
 - Level progress saving feature
 - Level selection UI
 
@@ -34,6 +33,7 @@
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
 - Squash and stretch
+  - Add angled squash and stretch when dashburst?
 
 - Use AudioStreamPlayer2D for certain sound effects
 
@@ -104,3 +104,4 @@
 - Dash node
 - Shockwave effect during dash
 - Dash-into-self burst mechanic
+- Spikes
