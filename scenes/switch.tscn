@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/props/switch.png" type="Texture" id=1]
 [ext_resource path="res://scenes/switch.gd" type="Script" id=2]
+[ext_resource path="res://scenes/switch_timer.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "switch"
@@ -41,5 +42,11 @@ position = Vector2( 0, 2 )
 shape = SubResource( 2 )
 
 [node name="timer" type="Timer" parent="."]
+
+[node name="switch_timer" parent="." instance=ExtResource( 3 )]
+margin_left = -8.13543
+margin_top = -23.6622
+margin_right = 7.86457
+margin_bottom = -7.6622
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

@@ -44,6 +44,8 @@ func open():
         sfx.play(sfx.SWITCH, sfx.QUIET_DB)
 
         if is_timed:
+            $switch_timer.timeout = timeout
+            $switch_timer.start_timer()
             $timer.wait_time = timeout
             $timer.one_shot = true
             $timer.start()

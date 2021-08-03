@@ -1,7 +1,6 @@
 # TODO
 
 - Shade death?
-- Time left above timed switches (radial progress?)
 - Timed danger gates
 - Timed breakable platforms
 - Level progress saving feature
@@ -43,6 +42,8 @@
 - Hire out for "main theme" + custom background music?
   - Use main theme at ending?
   - Consider trying to write something
+
+- BUG: Dashbursting into spikes doesn't kill you
 
 ## Story
 
@@ -105,3 +106,4 @@
 - Shockwave effect during dash
 - Dash-into-self burst mechanic
 - Spikes
+- Time left above timed switches (radial progress?)

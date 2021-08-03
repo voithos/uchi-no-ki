@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/props/switch_timer_top.png" type="Texture" id=1]
+[ext_resource path="res://assets/props/switch_timer_base.png" type="Texture" id=2]
+[ext_resource path="res://scenes/switch_timer.gd" type="Script" id=3]
+
+[node name="switch_timer" type="TextureProgress"]
+margin_right = 16.0
+margin_bottom = 16.0
+step = 6.25
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+fill_mode = 5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
