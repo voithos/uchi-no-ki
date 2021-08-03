@@ -21,6 +21,7 @@ enum {
     CHECKPOINT,
     ORB_SHATTER,
     SHADE_DASH,
+    DASHBURST,
 }
 
 const SAMPLES = {
@@ -36,6 +37,7 @@ const SAMPLES = {
     CHECKPOINT: preload("res://assets/sfx/checkpoint.wav"),
     ORB_SHATTER: preload("res://assets/sfx/shatter.wav"),
     SHADE_DASH: preload("res://assets/sfx/shade_dash.wav"),
+    DASHBURST: preload("res://assets/sfx/dashburst.wav"),
 }
 
 const POOL_SIZE = 8

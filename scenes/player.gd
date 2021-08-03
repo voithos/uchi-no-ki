@@ -47,7 +47,10 @@ var is_controllable = true
 
 # Shade dashing
 var is_dashing = false
-const DASH_DURATION = 0.15 # seconds
+var is_accel_dashing = false
+var is_dashburst = false
+const DASH_ACCEL_DURATION = 0.15 # seconds
+const DASH_DURATION = 0.4 # Includes DASH_ACCEL_DURATION, must be greater than it
 const DASH_VEL = 200
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
@@ -68,7 +71,7 @@ func _ready():
     $shade.position = Vector2.ZERO
     $shade/shape.disabled = true
     $shade/aftereffect.emitting = false
-    $shade/aftereffect.lifetime = DASH_DURATION + 0.15
+    $shade/aftereffect.lifetime = DASH_ACCEL_DURATION + 0.15
     
     _maybe_jump_to_checkpoint()
     
@@ -94,7 +97,7 @@ func _maybe_jump_to_checkpoint():
 func _physics_process(delta):
     # Need to update mana even when uncontrolled in order to update the UI.
     _update_mana(delta)
-    _animate_shade_dash(delta)
+    _animate_dash(delta)
 
     if !is_controllable:
         return
@@ -130,21 +133,26 @@ func _toggle_shade():
     else:
         _show_shade()
 
-func _hide_shade():
+func _hide_shade(quiet=false):
     time_warp.speedup()
     
     is_controllable = false
     is_shade_out = false
-    $shade/shape.disabled = true
+    $shade/shape.set_deferred("disabled", true)
     
-    sfx.play(sfx.SHADE_RETURN, sfx.QUIET_DB)
-    $shade/particles.speed_scale = 3.0
-    $shade_tween.interpolate_property($shade, "position", $shade.position, Vector2(0, 0),
-           SHADE_RETURN_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN)
-    $shade_tween.start()
-    yield($shade_tween, "tween_completed")
-    $shade/particles.speed_scale = 1.0
+    if !quiet:
+        sfx.play(sfx.SHADE_RETURN, sfx.QUIET_DB)
+        $shade/particles.speed_scale = 3.0
+        $shade_tween.interpolate_property($shade, "position", $shade.position, Vector2(0, 0),
+               SHADE_RETURN_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN)
+        $shade_tween.start()
+        yield($shade_tween, "tween_completed")
+        $shade/particles.speed_scale = 1.0
 
+    $shade/particles.restart()
+    $shade/aftereffect.restart()
+    $shade/particles.emitting = false
+    $shade/aftereffect.emitting = false
     is_controllable = true
     $shade.hide()
     $shade.position = Vector2.ZERO
@@ -177,14 +185,13 @@ func shade_dash(dir: Vector2):
     is_about_to_dash = false
     is_controllable = false
     is_dashing = true
+    is_accel_dashing = true
+    is_dashburst = false
     dash_timer = 0.0
     dash_direction = dir.normalized()
 
-    global_camera.shake(DASH_DURATION * 0.6, 30, 2)
+    global_camera.shake(DASH_ACCEL_DURATION * 0.6, 30, 2)
     sfx.play(sfx.SHADE_DASH, sfx.SFX_DB)
-    # TODO: Maybe this effect should only happen for the dash-into-self mechanic?
-    $shockwave.global_position = $shade.global_position
-    $shockwave.shockwave()
     
     if facing_left:
         $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage.png")
@@ -192,15 +199,22 @@ func shade_dash(dir: Vector2):
         $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage_flipped.png")
     $shade/aftereffect.restart()
 
-func _animate_shade_dash(delta):
+# Animates both the shade dash and the dashburst.
+func _animate_dash(delta):
     if !is_dashing:
         return
-    shade_velocity = dash_direction * DASH_VEL
-    shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
+    if is_accel_dashing:
+        shade_velocity = dash_direction * DASH_VEL
+        shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
+    if is_dashburst:
+        velocity = dash_direction * DASH_VEL
+        velocity = move_and_slide(velocity, Vector2.UP)
     
     dash_timer += delta
-    if dash_timer >= DASH_DURATION:
+    if dash_timer >= DASH_ACCEL_DURATION:
         is_controllable = true
+        is_accel_dashing = false
+    if dash_timer >= DASH_DURATION:
         is_dashing = false
     
 func _move_player(delta):
@@ -362,3 +376,28 @@ func win():
     level.begin_next_level_transition()
     
     global_camera.shake(0.75, 30, 1)
+
+
+func _on_burstbox_body_entered(body):
+    if is_dashing:
+        dashburst()
+
+func dashburst():
+    is_controllable = false
+    is_dashing = true
+    is_dashburst = true
+    # Reset timer
+    dash_timer = 0.0
+
+    _hide_shade(true)
+    
+    global_camera.shake(DASH_ACCEL_DURATION * 0.6, 30, 2)
+    sfx.play(sfx.DASHBURST, sfx.SFX_DB)
+    $shockwave.global_position = global_position
+    $shockwave.shockwave()
+    
+    #if facing_left:
+    #    $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage.png")
+    #else:
+    #    $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage_flipped.png")
+    #$shade/aftereffect.restart()

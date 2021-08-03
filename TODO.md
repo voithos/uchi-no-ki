@@ -1,7 +1,5 @@
 # TODO
 
-- Dash-into-self burst mechanic
-
 - Spikes
 - Shade death
 - Timed danger gates
@@ -23,6 +21,7 @@
 - Level that introduces the dash crystal
 - Level that introduces the dash-to-self burst
 - Level that requires precision midair dashes + platforming
+- Final level with "boss"
 
 - Fix drop-down section in midair-shenanigans
 
@@ -39,8 +38,27 @@
 - Use AudioStreamPlayer2D for certain sound effects
 
 - Icon
-- Minor story / cutscene
-- Decorative tile layer
+- Decorative tile layer?
+
+- Hire out for "main theme" + custom background music?
+  - Use main theme at ending?
+  - Consider trying to write something
+
+## Story
+
+- Introductory in-game cutscene (comic-like cyclic animations?)
+  - Mountain, thunder, cavern, monk enters
+  - Touches lodestone, gets teleported
+
+- Main game loop
+
+- Final level with in-game cutscene
+  - Approach statue, which stirs, awakens
+  - Cavern starts crumbling, have to quickly escape (rising lava?)
+  - At the end, meet a living member of the statue clan?
+    - Member exchanges something with monk
+    - Storm is gone
+    - Monk disappears?
 
 ## == Done ==
 
@@ -85,3 +103,4 @@
 - Dash effect for shade
 - Dash node
 - Shockwave effect during dash
+- Dash-into-self burst mechanic
