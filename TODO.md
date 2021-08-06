@@ -43,7 +43,6 @@
   - Use main theme at ending?
   - Consider trying to write something
 
-- BUG: Dashbursting into spikes doesn't kill you
 
 ## Story
 
@@ -107,3 +106,4 @@
 - Dash-into-self burst mechanic
 - Spikes
 - Time left above timed switches (radial progress?)
+- BUG: Dashbursting into spikes doesn't kill you

@@ -56,7 +56,7 @@ var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
 var is_about_to_dash = false
 var dash_start_timer = 0.0
-const DASH_START_DELAY = 0.1 # seconds
+const DASH_START_DELAY = 0.15 # seconds
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
@@ -357,6 +357,7 @@ func _on_hurtbox_body_entered(body):
 
 func die():
     is_controllable = false
+    is_dashing = false
     time_warp.speedup()
     # TODO: Add shade death and hide shade if body dies while shade is out
     $animation.play("death")
