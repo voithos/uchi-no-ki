@@ -145,7 +145,6 @@ radius = 5.0
 [node name="orb" type="Node2D"]
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
 hframes = 6
 script = ExtResource( 2 )
