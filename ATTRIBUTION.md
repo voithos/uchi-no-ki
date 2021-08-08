@@ -7,3 +7,4 @@
 - button.wav - https://freesound.org/people/magedu/sounds/263896/
 - switch.wav - https://freesound.org/people/joedeshon/sounds/119415/
 - checkpoint.wav - https://freesound.org/people/Vicces1212/sounds/123751/
+- scripts/uuid.gd - https://github.com/binogure-studio/godot-uuid

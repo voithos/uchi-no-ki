@@ -32,6 +32,7 @@ sfx="*res://scripts/sfx.gd"
 global_camera="*res://scripts/global_camera.gd"
 checkpoint_store="*res://scripts/checkpoint_store.gd"
 time_warp="*res://scripts/time_warp.gd"
+scroll_store="*res://scripts/scroll_store.gd"
 
 [display]
 

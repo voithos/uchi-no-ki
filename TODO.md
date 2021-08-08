@@ -9,7 +9,6 @@
 - Support for controller
 - Number of deaths counter
 - Number of deaths UI
-- "Strawberries" art
 - "Strawberries" in-level logic + sfx
 - "Strawberries" menu ui
 
@@ -107,3 +106,4 @@
 - Spikes
 - Time left above timed switches (radial progress?)
 - BUG: Dashbursting into spikes doesn't kill you
+- "Strawberries" art
