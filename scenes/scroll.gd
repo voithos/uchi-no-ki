@@ -28,10 +28,15 @@ func _on_area_body_entered(body):
     scroll_store.scroll_acquired(scroll_id)
     $sprite/area.set_deferred("monitoring", false)
     
-    sfx.play(sfx.SCROLL_ACQUIRE, sfx.EVEN_QUIETER_DB)
     # Slow down time while animating.
-    time_warp.slowdown(0.01, 0.1)
+    time_warp.slowdown(0.01, 0.05)
     $sprite/animation.play("acquire")
     yield($sprite/animation, "animation_finished")
     time_warp.speedup()
     queue_free()
+
+func _play_scroll_acquire():
+    sfx.play(sfx.SCROLL_ACQUIRE, sfx.EVEN_QUIETER_DB)
+
+func _play_scroll_acquire_complete():
+    sfx.play(sfx.SCROLL_ACQUIRE_COMPLETE, sfx.QUIET_DB)

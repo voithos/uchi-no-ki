@@ -23,6 +23,7 @@ enum {
     SHADE_DASH,
     DASHBURST,
     SCROLL_ACQUIRE,
+    SCROLL_ACQUIRE_COMPLETE,
 }
 
 const SAMPLES = {
@@ -40,6 +41,7 @@ const SAMPLES = {
     SHADE_DASH: preload("res://assets/sfx/shade_dash.wav"),
     DASHBURST: preload("res://assets/sfx/dashburst.wav"),
     SCROLL_ACQUIRE: preload("res://assets/sfx/scroll_acquire.wav"),
+    SCROLL_ACQUIRE_COMPLETE: preload("res://assets/sfx/scroll_acquire_complete.wav"),
 }
 
 const POOL_SIZE = 8

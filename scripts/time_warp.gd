@@ -27,6 +27,7 @@ func speedup(slowdown_time=SLOWDOWN_TIME):
 func _set_time_scale(scale):
     time_scale = scale
     if camera:
+        # TODO: This doesn't work exactly when custom time scales are used.
         var r = 1.0 - SLOW_TIME_SCALE
         var zoom = lerp(1.0, SLOWDOWN_CAMERA_ZOOM, (1.0 - scale) / r)
         camera.zoom.x = zoom

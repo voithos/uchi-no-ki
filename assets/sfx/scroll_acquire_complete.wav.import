@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/scroll_acquire_complete.wav-7abc5f78e9a2e4bb5be94b8f1e985832.sample"
+
+[deps]
+
+source_file="res://assets/sfx/scroll_acquire_complete.wav"
+dest_files=[ "res://.import/scroll_acquire_complete.wav-7abc5f78e9a2e4bb5be94b8f1e985832.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
