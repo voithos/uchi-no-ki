@@ -8,7 +8,6 @@ export var scroll_id = ''
 export (bool) var create_id setget _create_id
 
 func _create_id(value):
-    print('meep')
     var uuid = preload("res://scripts/uuid.gd")
     scroll_id = uuid.v4()
 
@@ -28,4 +27,11 @@ func _on_area_body_entered(body):
     var player = get_tree().get_nodes_in_group("player")[0]
     scroll_store.scroll_acquired(scroll_id)
     $sprite/area.set_deferred("monitoring", false)
+    
+    sfx.play(sfx.SCROLL_ACQUIRE, sfx.EVEN_QUIETER_DB)
+    # Slow down time while animating.
+    time_warp.slowdown(0.01, 0.1)
+    $sprite/animation.play("acquire")
+    yield($sprite/animation, "animation_finished")
+    time_warp.speedup()
     queue_free()

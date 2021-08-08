@@ -22,6 +22,7 @@ enum {
     ORB_SHATTER,
     SHADE_DASH,
     DASHBURST,
+    SCROLL_ACQUIRE,
 }
 
 const SAMPLES = {
@@ -38,6 +39,7 @@ const SAMPLES = {
     ORB_SHATTER: preload("res://assets/sfx/shatter.wav"),
     SHADE_DASH: preload("res://assets/sfx/shade_dash.wav"),
     DASHBURST: preload("res://assets/sfx/dashburst.wav"),
+    SCROLL_ACQUIRE: preload("res://assets/sfx/scroll_acquire.wav"),
 }
 
 const POOL_SIZE = 8

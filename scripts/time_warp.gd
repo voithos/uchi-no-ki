@@ -12,16 +12,16 @@ onready var time_tween = Tween.new()
 func _ready():
     add_child(time_tween)
 
-func slowdown():
+func slowdown(slow_time_scale=SLOW_TIME_SCALE, slowdown_time=SLOWDOWN_TIME):
     time_tween.remove_all()
     time_tween.interpolate_method(
-        self, "_set_time_scale", time_scale, SLOW_TIME_SCALE, SLOWDOWN_TIME, Tween.TRANS_QUAD, Tween.EASE_OUT)
+        self, "_set_time_scale", time_scale, slow_time_scale, slowdown_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
     time_tween.start()
 
-func speedup():
+func speedup(slowdown_time=SLOWDOWN_TIME):
     time_tween.remove_all()
     time_tween.interpolate_method(
-        self, "_set_time_scale", time_scale, 1.0, SLOWDOWN_TIME, Tween.TRANS_QUAD, Tween.EASE_IN)
+        self, "_set_time_scale", time_scale, 1.0, slowdown_time, Tween.TRANS_QUAD, Tween.EASE_IN)
     time_tween.start()
 
 func _set_time_scale(scale):
