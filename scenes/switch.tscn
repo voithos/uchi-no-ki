@@ -41,8 +41,6 @@ collision_mask = 2
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
 
-[node name="timer" type="Timer" parent="."]
-
 [node name="switch_timer" parent="." instance=ExtResource( 3 )]
 margin_left = -8.0
 margin_top = -22.0

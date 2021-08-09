@@ -15,10 +15,9 @@ func _on_area_body_entered(body):
     $animation.play("break")
     $area.set_deferred("monitoring", false)
 
-    $timer.wait_time = respawn_timeout
-    $timer.one_shot = true
-    $timer.start()
-    yield($timer, "timeout")
+    $warp_timer.timeout = respawn_timeout
+    $warp_timer.start()
+    yield($warp_timer, "timeout")
     
     $animation.play("spawn")
     yield($animation, "animation_finished")

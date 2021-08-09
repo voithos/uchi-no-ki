@@ -1,7 +1,7 @@
 extends Sprite
 
 export var is_on = false
-# Whether or not you can "undo" the toggle
+# Whether or not you can "undo" the toggle. Timed switches should not be toggleable.
 export var is_toggleable = false
 # Whether or not the switch is timed
 export var is_timed = false
@@ -20,6 +20,8 @@ export (bool) var force_close = false
 onready var gate_group = $".."
 
 func _ready():
+    assert(!(is_toggleable && is_timed))
+
     add_to_group("switches")
     # Rotate the timer so that it's always upright.
     $switch_timer.rect_rotation = rotation_degrees
