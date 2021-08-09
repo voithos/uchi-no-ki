@@ -1,10 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/props/scroll_disappear.png" type="Texture" id=1]
 [ext_resource path="res://scenes/scroll.gd" type="Script" id=2]
 [ext_resource path="res://assets/props/scroll.png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Animation" id=4]
 resource_name = "acquire"
 length = 1.8
 tracks/0/type = "value"
@@ -72,8 +88,32 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0, 0, 7 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("../particles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../particles:process_material:initial_velocity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 40.0 ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 length = 2.25
 loop = true
 step = 0.04
@@ -137,23 +177,38 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("../particles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5, 4 )
 
 [node name="scroll" type="Node2D"]
 script = ExtResource( 2 )
-scroll_id = "300b9e14-6bbc-4a72-ac3d-875100b5d632"
+scroll_id = "902d3770-b542-4700-9c46-fb60d6b9e6fb"
+
+[node name="particles" type="Particles2D" parent="."]
+amount = 40
+process_material = SubResource( 6 )
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 hframes = 8
-frame = 7
 
 [node name="animation" type="AnimationPlayer" parent="sprite"]
 autoplay = "idle"
-anims/acquire = SubResource( 1 )
-anims/idle = SubResource( 2 )
+anims/acquire = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="area" type="Area2D" parent="sprite"]
 collision_layer = 0

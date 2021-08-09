@@ -27,12 +27,15 @@ func _on_area_body_entered(body):
     var player = get_tree().get_nodes_in_group("player")[0]
     scroll_store.scroll_acquired(scroll_id)
     $sprite/area.set_deferred("monitoring", false)
+    # TODO: This doesn't work well with the current time_warp bug.
+    #global_camera.shake(0.15, 30, 2.5)
     
     # Slow down time while animating.
     time_warp.slowdown(0.01, 0.05)
     $sprite/animation.play("acquire")
     yield($sprite/animation, "animation_finished")
     time_warp.speedup()
+    yield(get_tree().create_timer(2.0), "timeout")
     queue_free()
 
 func _play_scroll_acquire():
