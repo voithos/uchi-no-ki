@@ -195,7 +195,6 @@ extents = Vector2( 5, 4 )
 
 [node name="scroll" type="Node2D"]
 script = ExtResource( 2 )
-scroll_id = "902d3770-b542-4700-9c46-fb60d6b9e6fb"
 
 [node name="particles" type="Particles2D" parent="."]
 amount = 40
