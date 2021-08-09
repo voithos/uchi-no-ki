@@ -261,9 +261,8 @@ collision_layer = 51
 script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 8 )
-hframes = 8
-frame = 7
+texture = ExtResource( 1 )
+hframes = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )

@@ -86,4 +86,4 @@ position = Vector2( -50, 328 )
 scroll_id = "38424bbc-8f68-4dc1-a69e-7ee96e311cf6"
 
 [node name="player" parent="level_logic" instance=ExtResource( 5 )]
-position = Vector2( 79, 357 )
+position = Vector2( 114, 191 )
