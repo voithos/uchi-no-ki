@@ -5,14 +5,17 @@ export (float) var timeout = 0
 var time_so_far = 0
 var is_running = false
 
+signal timeout
+
 func _ready():
     hide()
 
 func _process(delta):
     if is_running:
-        time_so_far += delta
+        time_so_far += delta * time_warp.time_scale
         _update_progress()
         if time_so_far >= timeout:
+            emit_signal("timeout")
             is_running = false
             hide()
 

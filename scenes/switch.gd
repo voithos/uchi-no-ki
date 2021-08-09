@@ -48,10 +48,7 @@ func open():
         if is_timed:
             $switch_timer.timeout = timeout
             $switch_timer.start_timer()
-            $timer.wait_time = timeout
-            $timer.one_shot = true
-            $timer.start()
-            yield($timer, "timeout")
+            yield($switch_timer, "timeout")
             close()
             
 func close():
