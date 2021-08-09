@@ -1,15 +1,13 @@
 # TODO
 
-- Shade death?
 - Timed danger gates
 - Timed breakable platforms
-- Level progress saving feature
-- Level selection UI
 
+- Saving mechanic
+- Level selection UI
 - Support for controller
 - Number of deaths counter
 - Number of deaths UI
-- "Strawberries" in-level logic + sfx
 - "Strawberries" menu ui
 
 ## Levels
@@ -26,7 +24,6 @@
 
 - Burst of particles when shade comes out
 - Slow down character animation while in shade (or use a different animation)
-- Ability to start level with player facing right
 - Stagger the up/down of the orbs and crystal floatations
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
@@ -107,3 +104,5 @@
 - Time left above timed switches (radial progress?)
 - BUG: Dashbursting into spikes doesn't kill you
 - "Strawberries" art
+- "Strawberries" in-level logic + sfx
+- Ability to start level with player facing right

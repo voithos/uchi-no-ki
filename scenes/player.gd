@@ -27,7 +27,7 @@ const MANA_DEPLETION = 70 # Rate of depletion
 const MANA_GAIN = 140 # Rate of gain when not in shade
 signal mana_changed
 
-var facing_left = true
+export (bool) var facing_left = true
 var is_moving = false
 var is_shade_moving = false
 var is_airborne = false
@@ -74,6 +74,8 @@ func _ready():
     $shade/aftereffect.lifetime = DASH_ACCEL_DURATION + 0.15
     
     _maybe_jump_to_checkpoint()
+    
+    _update_sprite_flip()
     
     # Initial animation.
     is_controllable = false

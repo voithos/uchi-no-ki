@@ -87,3 +87,4 @@ position = Vector2( -84, 464 )
 
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
 position = Vector2( -135, 143 )
+facing_left = false
