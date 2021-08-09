@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/warp_timer.gd" type="Script" id=1]
+
+[node name="warp_timer" type="Node2D"]
+script = ExtResource( 1 )
