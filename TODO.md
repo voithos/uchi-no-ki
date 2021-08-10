@@ -1,14 +1,17 @@
 # TODO
 
-- Timed danger gates
-- Timed breakable platforms
+- Dash-on-demand power up
+  - Add player logic
+  - Create new sprite/animation
+  - Create power-up altar sprite + animation + logic
 
 - Saving mechanic
 - Level selection UI
 - Support for controller
 - Number of deaths counter
-- Number of deaths UI
-- "Strawberries" menu ui
+- Final screen UI
+  - Number of deaths UI
+  - "Strawberries" menu ui
 
 ## Levels
 
@@ -23,12 +26,10 @@
 ## Polish
 
 - Burst of particles when shade comes out
-- Slow down character animation while in shade (or use a different animation)
-- Stagger the up/down of the orbs and crystal floatations
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
 - Squash and stretch
-  - Add angled squash and stretch when dashburst?
+- Special dashburst animation
 
 - Use AudioStreamPlayer2D for certain sound effects
 
@@ -43,7 +44,7 @@
 ## Story
 
 - Introductory in-game cutscene (comic-like cyclic animations?)
-  - Mountain, thunder, cavern, monk enters
+  - Mountain, cavern, monk enters
   - Touches lodestone, gets teleported
 
 - Main game loop
@@ -55,6 +56,10 @@
     - Member exchanges something with monk
     - Storm is gone
     - Monk disappears?
+
+## Stretch goals
+
+- Timed danger gates (burst of lava?)
 
 ## == Done ==
 
@@ -106,3 +111,5 @@
 - "Strawberries" art
 - "Strawberries" in-level logic + sfx
 - Ability to start level with player facing right
+- Slow down character animation while in shade (or use a different animation)
+- Stagger the up/down of the orbs and crystal floatations

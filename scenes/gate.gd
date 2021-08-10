@@ -23,14 +23,7 @@ func _ready():
     _add_to_gate_group()
 
 func _physics_process(delta):
-    # TODO: Does this work well?
-    #$animation.playback_speed = time_warp.time_scale
-    pass
-
-func _input(event):
-#    if OS.is_debug_build() and event is InputEventKey and event.is_action_pressed("debug"):
-#        toggle()
-    pass
+    $animation.playback_speed = time_warp.time_scale
 
 func _anim_name(anim):
     if nodust:

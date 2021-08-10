@@ -97,6 +97,9 @@ func _maybe_jump_to_checkpoint():
         global_position = checkpoint_store.get_checkpoint()
 
 func _physics_process(delta):
+    # Adjust playback speed based on current time scale.
+    $animation.playback_speed = time_warp.time_scale
+    
     # Need to update mana even when uncontrolled in order to update the UI.
     _update_mana(delta)
     _animate_dash(delta)
