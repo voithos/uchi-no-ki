@@ -267,6 +267,10 @@ func _move_player(delta):
     if was_airborne and is_on_floor():
         # Landed.
         is_airborne = false
+    elif !was_airborne and !is_on_floor():
+        # Fell off a cliff.
+        is_airborne = true
+
     if !is_airborne:
         if is_moving:
             $animation.play("run")
