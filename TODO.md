@@ -36,6 +36,7 @@
 - Icon
 - Decorative tile layer?
 
+- Hire out for cutscene art / animation?
 - Hire out for "main theme" + custom background music?
   - Use main theme at ending?
   - Consider trying to write something
@@ -60,6 +61,7 @@
 ## Stretch goals
 
 - Timed danger gates (burst of lava?)
+- Springs? Maybe trigger them with ki?
 
 ## == Done ==
 
