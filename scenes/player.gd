@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 var velocity = Vector2.ZERO
+var previous_velocity = Vector2.ZERO
 var shade_velocity = Vector2.ZERO
 
 const HORIZONTAL_VEL = 75.0
@@ -18,7 +19,8 @@ const GRAVITY = 6.0
 const JUMP_VEL = 160
 const TERM_VEL = JUMP_VEL * 2
 const FAST_FALL_MULTIPLIER = 1.7 # How much faster fast fall is compared to gravity
-const JUMP_SIDE_DUST_SPEED = 20 # Speed before we emit "side" jump particles
+const JUMP_SIDE_DUST_SPEED = 20 # Speed after which we emit "side" jump particles
+const LAND_DUST_SPEED = 80 # Speed after which we emit dust in the landed state
 
 const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 
@@ -214,6 +216,7 @@ func _animate_dash(delta):
         shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
     if is_dashburst:
         velocity = dash_direction * DASH_VEL
+        previous_velocity = velocity
         velocity = move_and_slide(velocity, Vector2.UP)
     
     dash_timer += delta
@@ -263,6 +266,7 @@ func _move_player(delta):
     var shade_pos = $shade.global_position
     var time_scaled_velocity = velocity * time_warp.time_scale
     time_scaled_velocity = move_and_slide(time_scaled_velocity, Vector2.UP)
+    previous_velocity = velocity
     velocity = time_scaled_velocity / time_warp.time_scale
     
     if was_airborne and is_on_floor():
@@ -330,7 +334,10 @@ func _jump():
     _create_dust()
 
 func _landed():
-    _create_dust(true)
+    if previous_velocity.y > LAND_DUST_SPEED:
+        _create_dust(true)
+        # The walk sound works well as a landed sound.
+        sfx.play(sfx.WALK, sfx.QUIET_DB)
 
 func _create_dust(is_landing=false):
     var dust = preload("res://scenes/jump_dust_particles.tscn").instance()
