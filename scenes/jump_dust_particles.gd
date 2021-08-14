@@ -3,8 +3,7 @@ extends Sprite
 func _ready():
     pass
 
-func play(direction):
+func play_once(direction):
     $animation.play(direction)
-
-func _animation_end():
+    yield($animation, "animation_finished")
     queue_free()

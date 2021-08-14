@@ -268,6 +268,7 @@ func _move_player(delta):
     if was_airborne and is_on_floor():
         # Landed.
         is_airborne = false
+        _landed()
     elif !was_airborne and !is_on_floor():
         # Fell off a cliff.
         is_airborne = true
@@ -326,16 +327,24 @@ func _jump():
     $animation.play("jump")
     
     # Create the dust animation
+    _create_dust()
+
+func _landed():
+    _create_dust(true)
+
+func _create_dust(is_landing=false):
     var dust = preload("res://scenes/jump_dust_particles.tscn").instance()
     dust.flip_h = not facing_left
     dust.global_position = global_position
     _add_sibling_above(dust)
     
+    if is_landing:
+        dust.play_once("land")
     # Play different animations based on horizontal speed
-    if abs(velocity.x) > JUMP_SIDE_DUST_SPEED:
-        dust.play("side")
+    elif abs(velocity.x) > JUMP_SIDE_DUST_SPEED:
+        dust.play_once("side")
     else:
-        dust.play("up")
+        dust.play_once("up")
 
 # Adds a sibling node above the player.
 func _add_sibling_above(node):
