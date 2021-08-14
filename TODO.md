@@ -30,6 +30,8 @@
 - Improve tutorial approach (more tied in with story?)
 - Squash and stretch
 - Special dashburst animation
+- Ki should disappear if you die
+- Space bar holding mechanic isn't good
 
 - Use AudioStreamPlayer2D for certain sound effects
 

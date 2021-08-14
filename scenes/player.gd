@@ -18,6 +18,7 @@ const GRAVITY = 6.0
 const JUMP_VEL = 160
 const TERM_VEL = JUMP_VEL * 2
 const FAST_FALL_MULTIPLIER = 1.7 # How much faster fast fall is compared to gravity
+const JUMP_SIDE_DUST_SPEED = 20 # Speed before we emit "side" jump particles
 
 const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released
 
@@ -324,6 +325,24 @@ func _jump():
     sfx.play(sfx.JUMP, sfx.EXTRA_QUIET_DB)
     $animation.play("jump")
     
+    # Create the dust animation
+    var dust = preload("res://scenes/jump_dust_particles.tscn").instance()
+    dust.flip_h = not facing_left
+    dust.global_position = global_position
+    _add_sibling_above(dust)
+    
+    # Play different animations based on horizontal speed
+    if abs(velocity.x) > JUMP_SIDE_DUST_SPEED:
+        dust.play("side")
+    else:
+        dust.play("up")
+
+# Adds a sibling node above the player.
+func _add_sibling_above(node):
+    var parent = get_parent()
+    parent.add_child(node)
+    parent.move_child(node, get_index())
+
 func _update_mana(delta):
     # Don't actually change anything if we aren't controllable, but still send the signal.
     if is_controllable:
