@@ -28,7 +28,6 @@
 - Burst of particles when shade comes out
 - Improve title art
 - Improve tutorial approach (more tied in with story?)
-- Squash and stretch
 - Special dashburst animation
 - Ki should disappear if you die
 - Space bar holding mechanic isn't good
@@ -42,7 +41,6 @@
 - Hire out for "main theme" + custom background music?
   - Use main theme at ending?
   - Consider trying to write something
-
 
 ## Story
 
@@ -117,3 +115,4 @@
 - Ability to start level with player facing right
 - Slow down character animation while in shade (or use a different animation)
 - Stagger the up/down of the orbs and crystal floatations
+- Squash and stretch

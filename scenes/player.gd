@@ -43,8 +43,13 @@ var is_shade_button_held = true
 # The threshold after which we treat the button as a "press and hold" instead of a "tap once".
 # TODO: Instead of this, just make the player hold the button down.
 const SHADE_BUTTON_HELD_THRESHOLD = 0.4
-
 const SHADE_RETURN_TIME = 0.3
+
+# Squash and stretch
+var squash_stretch_scale = Vector2.ONE
+const JUMP_SQUASH_STRETCH = Vector2(0.8, 1.2)
+const LAND_SQUASH_STRETCH = Vector2(1.5, 0.4)
+const SQUASH_LERP_SPEED = 10
 
 var is_controllable = true
 
@@ -106,6 +111,7 @@ func _physics_process(delta):
     # Need to update mana even when uncontrolled in order to update the UI.
     _update_mana(delta)
     _animate_dash(delta)
+    _animate_squash_stretch(delta)
 
     if !is_controllable:
         return
@@ -130,6 +136,23 @@ func _physics_process(delta):
     
     _update_sprite_flip()
     _walk_sfx(delta)
+
+func _animate_squash_stretch(delta):
+    if is_airborne and velocity.y < 0:
+        _apply_jump_squash_stretch()
+    else:
+        # We could actually use delta here, but we don't have to.
+        # https://www.construct.net/en/blogs/ashleys-blog-2/using-lerp-delta-time-924
+        var lerp_val = SQUASH_LERP_SPEED * delta * time_warp.time_scale
+        assert(lerp_val <= 1.0)
+        squash_stretch_scale.x = lerp(squash_stretch_scale.x, 1.0, lerp_val)
+        squash_stretch_scale.y = lerp(squash_stretch_scale.y, 1.0, lerp_val)
+    $sprite.scale = squash_stretch_scale
+
+func _apply_jump_squash_stretch():
+    squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
+    squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
+    $sprite.scale = squash_stretch_scale
 
 func _toggle_shade():
     # Can't toggle shade if dashing.
@@ -329,12 +352,17 @@ func _jump():
     velocity.y = -JUMP_VEL
     sfx.play(sfx.JUMP, sfx.EXTRA_QUIET_DB)
     $animation.play("jump")
-    
+    _apply_jump_squash_stretch()
+
     # Create the dust animation
     _create_dust()
 
 func _landed():
     if previous_velocity.y > LAND_DUST_SPEED:
+        # Set the squash/stretch scales based on the landing speed.
+        squash_stretch_scale.x = clamp(range_lerp(previous_velocity.y, 0, JUMP_VEL, 1.0, LAND_SQUASH_STRETCH.x), 1.0, LAND_SQUASH_STRETCH.x)
+        squash_stretch_scale.y = clamp(range_lerp(previous_velocity.y, 0, JUMP_VEL, 1.0, LAND_SQUASH_STRETCH.y), LAND_SQUASH_STRETCH.y, 1.0)
+
         _create_dust(true)
         # The walk sound works well as a landed sound.
         sfx.play(sfx.WALK, sfx.QUIET_DB)

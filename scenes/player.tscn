@@ -261,7 +261,9 @@ collision_layer = 51
 script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, 8 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -8 )
 hframes = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
@@ -327,7 +329,7 @@ mask_contribution = 0.1
 
 [node name="shade_tween" type="Tween" parent="."]
 
-[node name="time_tween" type="Tween" parent="."]
+[node name="anim_tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
