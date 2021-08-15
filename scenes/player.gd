@@ -16,6 +16,8 @@ const SHADE_VERTICAL_ACCEL = 6
 const SHADE_INITIAL_VEL = 1.5 # Percent of char's velocity
 
 const GRAVITY = 6.0
+const GRAVITY_DECREASE_THRESHOLD = 10 # The speed below which gravity is decreased.
+const GRAVITY_DECREASE_MULTIPLIER = 0.5 # The amount of decrease for low gravity (at the height of a jump).
 const JUMP_VEL = 160
 const TERM_VEL = JUMP_VEL * 2
 const FAST_FALL_MULTIPLIER = 1.7 # How much faster fast fall is compared to gravity
@@ -280,7 +282,9 @@ func _move_player(delta):
         if is_fast_falling:
             fall_multiplier = FAST_FALL_MULTIPLIER
 
-    velocity.y = min(TERM_VEL, velocity.y + GRAVITY * fall_multiplier * time_warp.time_scale)
+    # When we're nearing the top of the jump, decrease gravity.
+    var grav_multiplier = 1.0 if is_fast_falling or abs(velocity.y) > GRAVITY_DECREASE_THRESHOLD else GRAVITY_DECREASE_MULTIPLIER
+    velocity.y = min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier * time_warp.time_scale)
 
     # Lerp horizontal movement
     velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta * time_warp.time_scale)
