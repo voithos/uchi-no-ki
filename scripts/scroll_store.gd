@@ -6,7 +6,7 @@ extends Node
 var level_scrolls = {}
 
 func _ready():
-    pass
+    add_to_group("persistable")
 
 func has_scroll(scroll_id) -> bool:
     return _get_level_scrolls().has(scroll_id)
@@ -24,3 +24,9 @@ func _get_level_scrolls():
     if !level_scrolls.has(level):
         level_scrolls[level] = []
     return level_scrolls[level]
+
+func save_state():
+    return level_scrolls
+
+func load_state(save_data):
+    level_scrolls = save_data

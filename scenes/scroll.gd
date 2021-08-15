@@ -18,6 +18,10 @@ func _ready():
 
     # Randomize a position in the idle "float" animation.
     $sprite/animation.seek(rand_range(0, $sprite/animation.current_animation_length))
+    saving.connect("loaded", self, "_check_if_found")
+    _check_if_found()
+
+func _check_if_found():
     if scroll_store.has_scroll(scroll_id):
         queue_free()
 
