@@ -1,19 +1,21 @@
 # TODO
 
+## Mechanics + code
 - Dash-on-demand power up
   - Add player logic
   - Create new sprite/animation
   - Create power-up altar sprite + animation + logic
 
-- Level selection UI
 - Support for controller
-- Number of deaths counter
+
+## UI
+- Level selection UI
 - Final screen UI
   - Number of deaths UI
-  - "Strawberries" menu ui
+  - Scrolls menu ui
+- Improved title art + page
 
 ## Levels
-
 - Level that introduces the mana orb
 - Level that introduces the dash crystal
 - Level that introduces the dash-to-self burst
@@ -21,12 +23,10 @@
 - Final level with "boss"
 
 - Fix drop-down section in midair-shenanigans
+- Improve tutorial approach (more tied in with story?)
 
 ## Polish
-
 - Burst of particles when shade comes out
-- Improve title art
-- Improve tutorial approach (more tied in with story?)
 - Special dashburst animation
 - Ki should disappear if you die
 - Space bar holding mechanic isn't good
@@ -34,20 +34,18 @@
 - Use AudioStreamPlayer2D for certain sound effects
 
 - Icon
-- Decorative tile layer?
+- Decorative tile layer
 
-- Hire out for cutscene art / animation?
 - Hire out for "main theme" + custom background music?
   - Use main theme at ending?
   - Consider trying to write something
 
-## Story
+## Story / cutscenes
 
 - Introductory in-game cutscene (comic-like cyclic animations?)
   - Mountain, cavern, monk enters
   - Touches lodestone, gets teleported
-
-- Main game loop
+- Hire out for cutscene art / animation?
 
 - Final level with in-game cutscene
   - Approach statue, which stirs, awakens
@@ -117,3 +115,4 @@
 - Squash and stretch
 - Saving mechanic
 - Level saving mechanic
+- Number of deaths counter

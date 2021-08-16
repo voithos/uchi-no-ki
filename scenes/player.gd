@@ -434,6 +434,7 @@ func _on_hurtbox_body_entered(body):
 func die():
     is_controllable = false
     is_dashing = false
+    death_counter.die()
     time_warp.speedup()
     # TODO: Add shade death and hide shade if body dies while shade is out
     $animation.play("death")
