@@ -28,6 +28,7 @@ func begin_reset_transition():
 
 func _load_next_level():
     assert(next_level != "")
+    progression_store.complete_current_level()
     get_tree().change_scene(next_level)
 
 func _reset_level():

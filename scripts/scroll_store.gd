@@ -15,6 +15,8 @@ func scroll_acquired(scroll_id):
     var scrolls = _get_level_scrolls()
     if !scrolls.has(scroll_id):
         scrolls.append(scroll_id)
+        # Persist the data.
+        saving.save_game()
 
 func _level_name():
     return get_tree().get_current_scene().get_name()

@@ -5,7 +5,6 @@
   - Create new sprite/animation
   - Create power-up altar sprite + animation + logic
 
-- Saving mechanic
 - Level selection UI
 - Support for controller
 - Number of deaths counter
@@ -116,3 +115,5 @@
 - Slow down character animation while in shade (or use a different animation)
 - Stagger the up/down of the orbs and crystal floatations
 - Squash and stretch
+- Saving mechanic
+- Level saving mechanic
