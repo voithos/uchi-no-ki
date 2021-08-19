@@ -7,6 +7,7 @@
   - Create power-up altar sprite + animation + logic
 
 - Support for controller
+- Consider removing momentum preservation mechanic
 
 ## UI
 - Level selection UI

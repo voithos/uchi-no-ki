@@ -55,6 +55,9 @@ const SQUASH_LERP_SPEED = 10
 
 var is_controllable = true
 
+export (bool) var has_dash_powerup = false # Whether shade can dash at will
+const DASH_POWERUP_MANA_COST = 50.0
+
 # Shade dashing
 var is_dashing = false
 var is_accel_dashing = false
@@ -128,6 +131,8 @@ func _physics_process(delta):
             is_shade_button_held = false
 
     if is_shade_out:
+        if Input.is_action_just_pressed("ki_dash"):
+            _maybe_schedule_powerup_dash()
         _move_shade(delta)
         if is_shade_button_held:
             shade_button_held_duration += delta
@@ -210,6 +215,17 @@ func _show_shade():
     shade_button_held_duration = 0.0
     is_shade_button_held = true
 
+func _maybe_schedule_powerup_dash():
+    if !has_dash_powerup:
+        return
+    if mana <= 0:
+        # We're completely spent.
+        return
+    # We want to allow the dash even when there isn't enough mana
+    mana -= DASH_POWERUP_MANA_COST
+    var input_vector = _get_shade_input_vector()
+    shade_dash(_shade_vector_with_input(input_vector))
+    
 func schedule_shade_dash():
     is_about_to_dash = true
     dash_start_timer = 0.0
@@ -313,7 +329,7 @@ func _move_player(delta):
     if is_shade_out:
         $shade.global_position = shade_pos
 
-func _move_shade(delta):
+func _get_shade_input_vector():
     var target_horizontal = 0
     var target_vertical = 0
     is_shade_moving = false
@@ -328,27 +344,35 @@ func _move_shade(delta):
         target_vertical -= SHADE_VERTICAL_VEL
     if Input.is_action_pressed("move_down"):
         target_vertical += SHADE_VERTICAL_VEL
+
+    return Vector2(target_horizontal, target_vertical)
+
+func _move_shade(delta):
+    var input_vector = _get_shade_input_vector()
     
-    if target_horizontal != 0:
-        facing_left = target_horizontal < 0
+    if input_vector.x != 0:
+        facing_left = input_vector.x < 0
 
     if is_about_to_dash:
         # About to dash, so don't apply the target vel.
         dash_start_timer += delta
         if dash_start_timer >= DASH_START_DELAY:
-            # Use the shade's velocity by default, unless the player is holding
-            # down directions, in which case they take priority.
-            var dash_input = shade_velocity
-            if target_horizontal != 0 or target_vertical != 0:
-                dash_input = Vector2(target_horizontal, target_vertical)
-            shade_dash(dash_input)
+            shade_dash(_shade_vector_with_input(input_vector))
     else:
         # Main movement.
         # No gravity for shade
-        shade_velocity.x = lerp(shade_velocity.x, target_horizontal, SHADE_HORIZONTAL_ACCEL * delta)
-        shade_velocity.y = lerp(shade_velocity.y, target_vertical, SHADE_VERTICAL_ACCEL * delta)
+        shade_velocity.x = lerp(shade_velocity.x, input_vector.x, SHADE_HORIZONTAL_ACCEL * delta)
+        shade_velocity.y = lerp(shade_velocity.y, input_vector.y, SHADE_VERTICAL_ACCEL * delta)
 
     shade_velocity = $shade.move_and_slide(shade_velocity, Vector2.UP)
+
+func _shade_vector_with_input(input_vector):
+    # Use the shade's velocity by default, unless the player is holding
+    # down directions, in which case they take priority.
+    var shade_vector = shade_velocity
+    if input_vector.x != 0 or input_vector.y != 0:
+        shade_vector = input_vector
+    return shade_vector
 
 func _jump():
     is_airborne = true

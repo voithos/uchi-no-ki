@@ -78,3 +78,4 @@ scroll_id = "058b483e-7840-499d-b634-e46120d73e1b"
 
 [node name="player" parent="level_logic" instance=ExtResource( 2 )]
 position = Vector2( -73, -64 )
+has_dash_powerup = true
