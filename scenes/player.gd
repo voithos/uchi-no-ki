@@ -225,7 +225,7 @@ func _maybe_schedule_powerup_dash():
     mana -= DASH_POWERUP_MANA_COST
     var input_vector = _get_shade_input_vector()
     shade_dash(_shade_vector_with_input(input_vector))
-    
+
 func schedule_shade_dash():
     is_about_to_dash = true
     dash_start_timer = 0.0

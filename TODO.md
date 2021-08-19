@@ -2,7 +2,6 @@
 
 ## Mechanics + code
 - Dash-on-demand power up
-  - Add player logic
   - Create new sprite/animation
   - Create power-up altar sprite + animation + logic
 
@@ -31,8 +30,6 @@
 - Special dashburst animation
 - Ki should disappear if you die
 - Space bar holding mechanic isn't good
-
-- Use AudioStreamPlayer2D for certain sound effects
 
 - Icon
 - Decorative tile layer
@@ -117,3 +114,5 @@
 - Saving mechanic
 - Level saving mechanic
 - Number of deaths counter
+- Add player logic
+- Use AudioStreamPlayer2D for certain sound effects

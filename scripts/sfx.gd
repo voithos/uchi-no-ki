@@ -65,11 +65,13 @@ func _get_next_player_idx():
     return next
 
 func play(sample, db=SFX_DB):
+    var idx = _get_next_player_idx()
+    var player = pool[idx]
+    play_with_player(player, sample, db)
+
+func play_with_player(player, sample, db=SFX_DB):
     assert(sample in SAMPLES)
     var stream = SAMPLES[sample]
-    var idx = _get_next_player_idx()
-
-    var player = pool[idx]
     player.stream = stream
     player.volume_db = db
     player.play()

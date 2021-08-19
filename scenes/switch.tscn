@@ -47,4 +47,6 @@ margin_top = -22.0
 margin_right = 8.0
 margin_bottom = -6.0
 
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]

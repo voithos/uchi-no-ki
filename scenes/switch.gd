@@ -45,7 +45,7 @@ func open():
         $animation.play("switch")
         is_on = true
         gate_group.on_switch_toggle()
-        sfx.play(sfx.SWITCH, sfx.QUIET_DB)
+        sfx.play_with_player($audio, sfx.SWITCH, sfx.QUIET_DB)
 
         if is_timed:
             $switch_timer.timeout = timeout
@@ -58,7 +58,7 @@ func close():
         $animation.play_backwards("switch")
         is_on = false
         gate_group.on_switch_toggle()
-        sfx.play(sfx.SWITCH, sfx.QUIET_DB)
+        sfx.play_with_player($audio, sfx.SWITCH, sfx.QUIET_DB)
 
 func toggle():
     if is_on and !is_toggleable:
