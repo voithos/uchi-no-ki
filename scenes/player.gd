@@ -207,7 +207,7 @@ func _show_shade():
 
     $shade.show()
     $shade.position = Vector2.ZERO
-    shade_velocity = velocity * SHADE_INITIAL_VEL
+    shade_velocity = Vector2.ZERO
     $shade/shape.disabled = false
     $shade/particles.restart()
     sfx.play(sfx.SHADE, sfx.QUIET_DB)

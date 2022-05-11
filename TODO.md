@@ -1,8 +1,5 @@
 # TODO
 
-## Mechanics + code
-- Consider removing momentum preservation mechanic
-
 ## UI
 - Level selection UI
 - Final screen UI
