@@ -29,6 +29,7 @@ func _on_area_body_entered(body):
     if Engine.editor_hint:
         return
     var player = get_tree().get_nodes_in_group("player")[0]
+    var was_controllable = player.on_scroll_acquire_start()
     scroll_store.scroll_acquired(scroll_id)
     $sprite/area.set_deferred("monitoring", false)
     # TODO: This doesn't work well with the current time_warp bug.
@@ -38,6 +39,7 @@ func _on_area_body_entered(body):
     time_warp.slowdown(0.01, 0.05)
     $sprite/animation.play("acquire")
     yield($sprite/animation, "animation_finished")
+    player.on_scroll_acquire_stop(was_controllable)
     time_warp.speedup()
     yield(get_tree().create_timer(2.0), "timeout")
     queue_free()

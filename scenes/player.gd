@@ -484,3 +484,11 @@ func dashburst():
     #else:
     #    $shade/aftereffect.texture = preload("res://assets/player/shade_afterimage_flipped.png")
     #$shade/aftereffect.restart()
+
+func on_scroll_acquire_start():
+    var was_controllable = is_controllable
+    is_controllable = false
+    return was_controllable
+    
+func on_scroll_acquire_stop(was_controllable):
+    is_controllable = was_controllable
