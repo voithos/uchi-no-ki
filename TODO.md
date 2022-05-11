@@ -1,18 +1,13 @@
 # TODO
 
 ## Mechanics + code
-- Dash-on-demand power up
-  - Create new sprite/animation
-  - Create power-up altar sprite + animation + logic
-
-- Support for controller
 - Consider removing momentum preservation mechanic
 
 ## UI
 - Level selection UI
 - Final screen UI
-  - Number of deaths UI
-  - Scrolls menu ui
+  - Number of deaths
+  - Scrolls collected
 - Improved title art + page
 
 ## Levels
@@ -20,43 +15,14 @@
 - Level that introduces the dash crystal
 - Level that introduces the dash-to-self burst
 - Level that requires precision midair dashes + platforming
-- Final level with "boss"
+- Final level
 
 - Fix drop-down section in midair-shenanigans
-- Improve tutorial approach (more tied in with story?)
 
 ## Polish
-- Burst of particles when shade comes out
 - Special dashburst animation
 - Ki should disappear if you die
 - Space bar holding mechanic isn't good
-
-- Icon
-- Decorative tile layer
-
-- Hire out for "main theme" + custom background music?
-  - Use main theme at ending?
-  - Consider trying to write something
-
-## Story / cutscenes
-
-- Introductory in-game cutscene (comic-like cyclic animations?)
-  - Mountain, cavern, monk enters
-  - Touches lodestone, gets teleported
-- Hire out for cutscene art / animation?
-
-- Final level with in-game cutscene
-  - Approach statue, which stirs, awakens
-  - Cavern starts crumbling, have to quickly escape (rising lava?)
-  - At the end, meet a living member of the statue clan?
-    - Member exchanges something with monk
-    - Storm is gone
-    - Monk disappears?
-
-## Stretch goals
-
-- Timed danger gates (burst of lava?)
-- Springs? Maybe trigger them with ki?
 
 ## == Done ==
 
