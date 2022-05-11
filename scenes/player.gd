@@ -436,11 +436,12 @@ func _on_hurtbox_body_entered(body):
     die()
 
 func die():
+    _hide_shade(true)
     is_controllable = false
     is_dashing = false
     death_counter.die()
     time_warp.speedup()
-    # TODO: Add shade death and hide shade if body dies while shade is out
+    
     $animation.play("death")
     sfx.play(sfx.DEATH)
     global_camera.shake(0.5, 30, 3)

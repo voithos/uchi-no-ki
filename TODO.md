@@ -17,7 +17,6 @@
 
 ## Polish
 - Special dashburst animation
-- Ki should disappear if you die
 
 ## == Done ==
 
