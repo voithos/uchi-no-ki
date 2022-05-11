@@ -18,7 +18,6 @@
 ## Polish
 - Special dashburst animation
 - Ki should disappear if you die
-- Space bar holding mechanic isn't good
 
 ## == Done ==
 
@@ -79,3 +78,4 @@
 - Add player logic
 - Use AudioStreamPlayer2D for certain sound effects
 - Improved title art + page
+- Space bar holding mechanic isn't good

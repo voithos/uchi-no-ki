@@ -40,11 +40,6 @@ var was_airborne = false
 var is_fast_falling = false
 
 var is_shade_out = false
-var shade_button_held_duration = 0.0
-var is_shade_button_held = true
-# The threshold after which we treat the button as a "press and hold" instead of a "tap once".
-# TODO: Instead of this, just make the player hold the button down.
-const SHADE_BUTTON_HELD_THRESHOLD = 0.4
 const SHADE_RETURN_TIME = 0.3
 
 # Squash and stretch
@@ -122,22 +117,14 @@ func _physics_process(delta):
         return
 
     if Input.is_action_just_pressed("ki_burst"):
-        _toggle_shade()
+        _toggle_shade(true)
     if Input.is_action_just_released("ki_burst"):
-        if shade_button_held_duration >= SHADE_BUTTON_HELD_THRESHOLD:
-            # Button was held; treat as a release
-            _toggle_shade()
-        else:
-            is_shade_button_held = false
+        _toggle_shade(false)
 
     if is_shade_out:
         if Input.is_action_just_pressed("ki_dash"):
             _maybe_schedule_powerup_dash()
         _move_shade(delta)
-        if is_shade_button_held:
-            shade_button_held_duration += delta
-        else:
-            shade_button_held_duration = 0
 
     _move_player(delta)
     
@@ -161,14 +148,14 @@ func _apply_jump_squash_stretch():
     squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
     $sprite.scale = squash_stretch_scale
 
-func _toggle_shade():
+func _toggle_shade(desired_state: bool):
     # Can't toggle shade if dashing.
     if is_dashing or is_about_to_dash:
         return
         
-    if is_shade_out:
+    if is_shade_out and !desired_state:
         _hide_shade()
-    else:
+    elif desired_state:
         _show_shade()
 
 func _hide_shade(quiet=false):
@@ -195,9 +182,6 @@ func _hide_shade(quiet=false):
     $shade.hide()
     $shade.position = Vector2.ZERO
     shade_velocity = Vector2.ZERO
-    
-    shade_button_held_duration = 0.0
-    is_shade_button_held = true
 
 func _show_shade():
     time_warp.slowdown()
@@ -211,9 +195,6 @@ func _show_shade():
     $shade/shape.disabled = false
     $shade/particles.restart()
     sfx.play(sfx.SHADE, sfx.QUIET_DB)
-    
-    shade_button_held_duration = 0.0
-    is_shade_button_held = true
 
 func _maybe_schedule_powerup_dash():
     if !has_dash_powerup:
@@ -289,7 +270,6 @@ func _move_player(delta):
             facing_left = target_horizontal < 0
 
         # Apply gravity and fast falling
-        # TODO: Have the shade trigger fast falling upon return?
         if is_airborne and Input.is_action_just_released("move_up"):
             is_fast_falling = true
             if velocity.y < 0:
@@ -429,7 +409,7 @@ func _update_mana(delta):
 func set_mana(m):
     mana = min(max(0, m), MAX_MANA)
     if mana == 0:
-        _toggle_shade()
+        _toggle_shade(false)
     emit_signal("mana_changed", mana / MAX_MANA)
 
 func _update_sprite_flip():
