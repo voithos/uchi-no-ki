@@ -325,6 +325,7 @@ shape = SubResource( 14 )
 speed = 2.0
 acceleration = 1.0
 max_size = 1.0
+distortion_strength = 0.1
 mask_contribution = 0.1
 
 [node name="shade_tween" type="Tween" parent="."]

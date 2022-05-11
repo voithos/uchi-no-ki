@@ -8,3 +8,4 @@
 - switch.wav - https://freesound.org/people/joedeshon/sounds/119415/
 - checkpoint.wav - https://freesound.org/people/Vicces1212/sounds/123751/
 - scripts/uuid.gd - https://github.com/binogure-studio/godot-uuid
+- assets/ui/cover_art.png - Made by @harveydentmd

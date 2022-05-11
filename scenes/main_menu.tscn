@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/transition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui/main_menu.png" type="Texture" id=2]
 [ext_resource path="res://scenes/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/ui/press_space.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/cover_art.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -26,6 +27,10 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="cover_art" type="Sprite" parent="canvas"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 5 )
 
 [node name="sprite" type="Sprite" parent="canvas"]
 position = Vector2( 160, 90 )

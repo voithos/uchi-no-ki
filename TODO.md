@@ -8,7 +8,6 @@
 - Final screen UI
   - Number of deaths
   - Scrolls collected
-- Improved title art + page
 
 ## Levels
 - Level that introduces the mana orb
@@ -82,3 +81,4 @@
 - Number of deaths counter
 - Add player logic
 - Use AudioStreamPlayer2D for certain sound effects
+- Improved title art + page
