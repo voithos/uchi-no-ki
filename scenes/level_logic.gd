@@ -7,6 +7,9 @@ export (String, FILE, "*.tscn") var next_level
 func _ready():
     add_to_group("level")
     music.play_background()
+    
+    # Load the game state once.
+    saving.load_game()
 
 func begin_next_level_transition():
     var timer = Timer.new()

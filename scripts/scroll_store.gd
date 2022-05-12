@@ -4,6 +4,8 @@ extends Node
 
 # Note, level names must be unique!
 var level_scrolls = {}
+# Saved, to differentiate between "ever acquired" vs new-games.
+var saved_level_scrolls = {}
 
 func _ready():
     add_to_group("persistable")
@@ -28,7 +30,16 @@ func _get_level_scrolls():
     return level_scrolls[level]
 
 func save_state():
+    # Persist new scroll_ids into saved level scrolls.
+    for level in level_scrolls.keys():
+        for scroll_id in level_scrolls[level]:
+            if !saved_level_scrolls.has(level):
+                saved_level_scrolls[level] = []
+            if !saved_level_scrolls[level].has(scroll_id):
+                saved_level_scrolls[level].append(scroll_id)
+
     return level_scrolls
 
 func load_state(save_data):
-    level_scrolls = save_data
+    # Only load into saved_level_scrolls, so that players can still start new games and find scrolls.
+    saved_level_scrolls = save_data
