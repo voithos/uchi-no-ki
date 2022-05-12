@@ -4,6 +4,7 @@ extends Node
 
 # Note, level names must be unique!
 var levels = {}
+var saved_levels = {}
 
 func _ready():
     add_to_group("persistable")
@@ -20,19 +21,24 @@ func total_deaths() -> int:
     return deaths
 
 func die():
-    # Can only die in current level, naturally
-    var level = _level_name()
-    if !levels.has(level):
-        levels[level] = 0
-    levels[level] += 1
+    # Track current-run deaths separately from saved deaths.
+    _increment_death(levels)
+    _increment_death(saved_levels)
     # Persist the data.
     saving.save_game()
+
+func _increment_death(store):
+    # Can only die in current level, naturally
+    var level = _level_name()
+    if !store.has(level):
+        store[level] = 0
+    store[level] += 1
 
 func _level_name():
     return get_tree().get_current_scene().get_name()
 
 func save_state():
-    return levels
+    return saved_levels
 
 func load_state(save_data):
-    levels = save_data
+    saved_levels = save_data

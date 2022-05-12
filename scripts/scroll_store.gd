@@ -38,7 +38,7 @@ func save_state():
             if !saved_level_scrolls[level].has(scroll_id):
                 saved_level_scrolls[level].append(scroll_id)
 
-    return level_scrolls
+    return saved_level_scrolls
 
 func load_state(save_data):
     # Only load into saved_level_scrolls, so that players can still start new games and find scrolls.
