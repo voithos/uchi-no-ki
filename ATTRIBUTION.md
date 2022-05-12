@@ -9,3 +9,4 @@
 - checkpoint.wav - https://freesound.org/people/Vicces1212/sounds/123751/
 - scripts/uuid.gd - https://github.com/binogure-studio/godot-uuid
 - assets/ui/cover_art.png - Made by @harveydentmd
+- monogram.ttf - https://datagoblin.itch.io/monogram

@@ -20,6 +20,12 @@ func scroll_acquired(scroll_id):
         # Persist the data.
         saving.save_game()
 
+func total_scrolls():
+    var total = 0
+    for level in level_scrolls.keys():
+        total += len(level_scrolls[level])
+    return total
+
 func _level_name():
     return get_tree().get_current_scene().get_name()
 

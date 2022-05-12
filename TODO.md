@@ -2,9 +2,6 @@
 
 ## UI
 - Level selection UI
-- Final screen UI
-  - Number of deaths
-  - Scrolls collected
 
 ## Levels
 - Level that introduces the mana orb

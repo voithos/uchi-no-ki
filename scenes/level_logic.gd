@@ -8,7 +8,7 @@ func _ready():
     add_to_group("level")
     music.play_background()
     
-    # Load the game state once.
+    # Load the game state once per level.
     saving.load_game()
 
 func begin_next_level_transition():
