@@ -1,5 +1,6 @@
 extends Node2D
 
+# TODO: Set this to the actual number of scrolls in the final set of levels.
 const TOTAL_SCROLLS = 24
 
 func _ready():

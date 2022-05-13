@@ -33,6 +33,7 @@ const MANA_GAIN = 140 # Rate of gain when not in shade
 signal mana_changed
 
 export (bool) var facing_left = true
+var is_dying = false
 var is_moving = false
 var is_shade_moving = false
 var is_airborne = false
@@ -116,14 +117,16 @@ func _physics_process(delta):
     if !is_controllable:
         return
 
+    if Input.is_action_just_pressed("restart"):
+        die()
+        return
+
     if Input.is_action_just_pressed("ki_burst"):
         _toggle_shade(true)
     if Input.is_action_just_released("ki_burst"):
         _toggle_shade(false)
 
     if is_shade_out:
-        if Input.is_action_just_pressed("ki_dash"):
-            _maybe_schedule_powerup_dash()
         _move_shade(delta)
 
     _move_player(delta)
@@ -436,6 +439,8 @@ func _on_hurtbox_body_entered(body):
     die()
 
 func die():
+    if is_dying: return
+    is_dying = true
     _hide_shade(true)
     is_controllable = false
     is_dashing = false
