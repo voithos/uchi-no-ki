@@ -474,6 +474,8 @@ func dashburst():
     is_controllable = false
     is_dashing = true
     is_dashburst = true
+    # Update mana
+    set_mana(MAX_MANA)
     # Reset timer
     dash_timer = 0.0
 
