@@ -12,9 +12,6 @@
 
 - Fix drop-down section in midair-shenanigans
 
-## Polish
-- Special dashburst animation
-
 ## == Done ==
 
 - Design
@@ -75,3 +72,4 @@
 - Use AudioStreamPlayer2D for certain sound effects
 - Improved title art + page
 - Space bar holding mechanic isn't good
+- Special dashburst animation

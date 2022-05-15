@@ -47,6 +47,7 @@ const SHADE_RETURN_TIME = 0.3
 var squash_stretch_scale = Vector2.ONE
 const JUMP_SQUASH_STRETCH = Vector2(0.8, 1.2)
 const LAND_SQUASH_STRETCH = Vector2(1.5, 0.4)
+const DASHBURST_SQUASH_STRETCH = Vector2(1.4, 0.7)
 const SQUASH_LERP_SPEED = 10
 
 var is_controllable = true
@@ -108,7 +109,7 @@ func _maybe_jump_to_checkpoint():
 func _physics_process(delta):
     # Adjust playback speed based on current time scale.
     $animation.playback_speed = time_warp.time_scale
-
+    
     # Need to update mana even when uncontrolled in order to update the UI.
     _update_mana(delta)
     _animate_dash(delta)
@@ -135,7 +136,10 @@ func _physics_process(delta):
     _walk_sfx(delta)
 
 func _animate_squash_stretch(delta):
-    if is_airborne and velocity.y < 0:
+    _maybe_update_offset()
+    if is_dashburst and abs(velocity.y) < DASH_VEL / 2.0:
+        _apply_dashburst_squash_stretch()
+    elif is_airborne and velocity.y < 0:
         _apply_jump_squash_stretch()
     else:
         # We could actually use delta here, but we don't have to.
@@ -146,9 +150,22 @@ func _animate_squash_stretch(delta):
         squash_stretch_scale.y = lerp(squash_stretch_scale.y, 1.0, lerp_val)
     $sprite.scale = squash_stretch_scale
 
+func _maybe_update_offset():
+    if is_dashburst:
+        $sprite.offset = Vector2.ZERO
+        $sprite.position = Vector2.ZERO
+    else:
+        $sprite.offset = Vector2(0, -8)
+        $sprite.position = Vector2(0, 8)
+
 func _apply_jump_squash_stretch():
     squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
     squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
+    $sprite.scale = squash_stretch_scale
+
+func _apply_dashburst_squash_stretch():
+    squash_stretch_scale.x = range_lerp(min(dash_timer, DASH_DURATION), 0, DASH_DURATION, DASHBURST_SQUASH_STRETCH.x, 1.0)
+    squash_stretch_scale.y = range_lerp(min(dash_timer, DASH_DURATION), 0, DASH_DURATION, DASHBURST_SQUASH_STRETCH.y, 1.0)
     $sprite.scale = squash_stretch_scale
 
 func _toggle_shade(desired_state: bool):
@@ -250,6 +267,7 @@ func _animate_dash(delta):
         is_accel_dashing = false
     if dash_timer >= DASH_DURATION:
         is_dashing = false
+        is_dashburst = false
     
 func _move_player(delta):
     was_airborne = is_airborne
@@ -303,11 +321,15 @@ func _move_player(delta):
         # Fell off a cliff.
         is_airborne = true
 
-    if !is_airborne:
+    if !is_airborne and !is_dashburst:
         if is_moving:
             $animation.play("run")
         else:
             $animation.play("idle")
+            
+    # Special case for 'was_dashburst'
+    if is_airborne and $animation.current_animation == "dashburst" and velocity.y > GRAVITY_DECREASE_THRESHOLD:
+        $animation.play("jump")
 
     if is_shade_out:
         $shade.global_position = shade_pos
@@ -480,6 +502,9 @@ func dashburst():
     dash_timer = 0.0
 
     _hide_shade(true)
+    
+    $animation.play("dashburst")
+    _apply_dashburst_squash_stretch()
     
     global_camera.shake(DASH_ACCEL_DURATION * 0.6, 30, 2)
     sfx.play(sfx.DASHBURST, sfx.SFX_DB)
