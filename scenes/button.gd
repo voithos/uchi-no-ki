@@ -7,6 +7,10 @@ export (bool) var is_necessary = true
 export (bool) var is_sufficient = false
 var is_on = false
 
+# These are here for parity with switches.
+var force_open = false
+var force_close = false
+
 onready var gate_group = $".."
 var body_count = 0
 

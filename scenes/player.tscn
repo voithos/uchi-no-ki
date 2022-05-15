@@ -302,8 +302,9 @@ script = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 0, 8 )
-texture = ExtResource( 11 )
+texture = ExtResource( 1 )
 offset = Vector2( 0, -8 )
+hframes = 5
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/dashburst = SubResource( 15 )

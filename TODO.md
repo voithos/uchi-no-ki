@@ -12,6 +12,9 @@
 
 - Fix drop-down section in midair-shenanigans
 
+## Bugs
+- Edge of gate kills you even when it's not moving
+
 ## == Done ==
 
 - Design
