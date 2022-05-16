@@ -120,7 +120,7 @@ position = Vector2( 360, 160 )
 
 [node name="scroll" parent="level_logic/props" instance=ExtResource( 13 )]
 position = Vector2( -224.6, -7.31625 )
-scroll_id = "761f0e98-8d4f-4142-8e2b-adeeb45bcf5d"
+scroll_id = "6d6c0106-133d-45c5-9897-5c3e2b374a70"
 
 [node name="block2" parent="level_logic/props" instance=ExtResource( 14 )]
 position = Vector2( -48, -2 )

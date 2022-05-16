@@ -107,6 +107,7 @@ func _maybe_jump_to_checkpoint():
         global_position = checkpoint_store.get_checkpoint()
 
 func _physics_process(delta):
+    _maybe_die()
     # Adjust playback speed based on current time scale.
     $animation.playback_speed = time_warp.time_scale
     
@@ -524,3 +525,9 @@ func on_scroll_acquire_start():
     
 func on_scroll_acquire_stop(was_controllable):
     is_controllable = was_controllable
+
+const ABYSS_DEATH_THRESHOLD_Y = 1250
+func _maybe_die():
+    # Special case handling in case the player falls off the edge of the world.
+    if position.y > ABYSS_DEATH_THRESHOLD_Y:
+        die()

@@ -6,11 +6,7 @@
 ## Levels
 - Level that introduces the mana orb
 - Level that introduces the dash crystal
-- Level that introduces the dash-to-self burst
-- Level that requires precision midair dashes + platforming
 - Final level
-
-- Fix drop-down section in midair-shenanigans
 
 ## Bugs
 - Edge of gate kills you even when it's not moving

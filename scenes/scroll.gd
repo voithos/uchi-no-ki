@@ -9,7 +9,6 @@ export (bool) var create_id setget _create_id
 
 func _create_id(value):
     var uuid = preload("res://scripts/uuid.gd")
-    print('wat')
     scroll_id = uuid.v4()
 
 func _ready():
