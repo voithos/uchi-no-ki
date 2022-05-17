@@ -19,6 +19,8 @@ func _ready():
     
     $animation.seek(0, true)
     $animation.stop()
+    $hitbox.monitoring = false
+    $hitbox.monitorable = false
     
     _add_to_gate_group()
 
