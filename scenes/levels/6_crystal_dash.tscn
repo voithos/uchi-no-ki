@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/player_start.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/danger_tilemap_halfsize.tscn" type="PackedScene" id=12]
 
-[node name="level" type="Node2D"]
+[node name="6_crystal_dash" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 9 )]
 next_level = "res://scenes/end_screen.tscn"
@@ -51,7 +51,7 @@ position = Vector2( -302, 69 )
 position = Vector2( -165, 112 )
 
 [node name="player" parent="level_logic" instance=ExtResource( 3 )]
-position = Vector2( -478, 80 )
+position = Vector2( -472, 73 )
 
 [node name="player_start" parent="level_logic" instance=ExtResource( 11 )]
 position = Vector2( -413, 55 )

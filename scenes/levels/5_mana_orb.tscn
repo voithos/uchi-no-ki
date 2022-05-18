@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/scroll.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/checkpoint.tscn" type="PackedScene" id=14]
 
-[node name="level" type="Node2D"]
+[node name="5_mana_orb" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 3 )]
 next_level = "res://scenes/levels/6_crystal_dash.tscn"
@@ -195,4 +195,5 @@ position = Vector2( -609, -176 )
 position = Vector2( 6, 48 )
 
 [node name="player_start" parent="level_logic" instance=ExtResource( 12 )]
-position = Vector2( -361, -14 )
+position = Vector2( -571, -199 )
+active = true
