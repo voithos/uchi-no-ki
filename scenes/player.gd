@@ -41,6 +41,7 @@ var was_airborne = false
 var is_fast_falling = false
 
 var is_shade_out = false
+var is_shade_return_scheduled = false
 const SHADE_RETURN_TIME = 0.3
 
 # Squash and stretch
@@ -116,6 +117,10 @@ func _physics_process(delta):
     _animate_dash(delta)
     _animate_squash_stretch(delta)
 
+    # Allow shade release while non controllable.
+    if Input.is_action_just_released("ki_burst"):
+        _toggle_shade(false)
+
     if !is_controllable:
         return
 
@@ -125,8 +130,6 @@ func _physics_process(delta):
 
     if Input.is_action_just_pressed("ki_burst"):
         _toggle_shade(true)
-    if Input.is_action_just_released("ki_burst"):
-        _toggle_shade(false)
 
     if is_shade_out:
         _move_shade(delta)
@@ -172,6 +175,8 @@ func _apply_dashburst_squash_stretch():
 func _toggle_shade(desired_state: bool):
     # Can't toggle shade if dashing.
     if is_dashing or is_about_to_dash:
+        if is_shade_out and !desired_state:
+            is_shade_return_scheduled = true
         return
         
     if is_shade_out and !desired_state:
@@ -269,6 +274,9 @@ func _animate_dash(delta):
     if dash_timer >= DASH_DURATION:
         is_dashing = false
         is_dashburst = false
+        if is_shade_return_scheduled:
+            _toggle_shade(false)
+            is_shade_return_scheduled = false
     
 func _move_player(delta):
     was_airborne = is_airborne
