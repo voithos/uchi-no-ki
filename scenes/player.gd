@@ -104,7 +104,6 @@ func _ready():
 
 func _maybe_jump_to_checkpoint():
     if checkpoint_store.has_checkpoint():
-        print("JUMPING TO CHECKPOINT")
         global_position = checkpoint_store.get_checkpoint()
 
 func _physics_process(delta):

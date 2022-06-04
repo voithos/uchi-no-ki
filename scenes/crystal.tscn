@@ -141,8 +141,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 4.0
-height = 6.0
+radius = 7.0
+height = 4.0
 
 [node name="crystal" type="Node2D"]
 
