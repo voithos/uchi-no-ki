@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/tilemap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gate_group.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/block.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/goal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/danger_tilemap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/danger_tilemap_halfsize.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/player_start.tscn" type="PackedScene" id=12]
+
+[node name="7_finale" type="Node2D"]
+
+[node name="level_logic" parent="." instance=ExtResource( 3 )]
+next_level = "res://scenes/end_screen.tscn"
+
+[node name="danger_tilemap" parent="level_logic" instance=ExtResource( 10 )]
+
+[node name="danger_tilemap_halfsize" parent="level_logic" instance=ExtResource( 11 )]
+
+[node name="tilemap" parent="level_logic" instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -65542, 0, 196609, -65541, 0, 3, -65540, 0, 3, -65539, 0, 3, -65538, 0, 3, -65537, 0, 3, -131072, 0, 0, -6, 0, 1, -5, 0, 327686, -4, 0, 327685, -3, 0, 393222, -2, 0, 262150, -1, 0, 65538, -65536, 0, 131075, 65530, 0, 131072, 65531, 0, 131073, 65532, 0, 131073, 65533, 0, 131073, 65534, 0, 131073, 65535, 0, 131073, 0, 0, 196611, 262136, 0, 196609, 262137, 0, 3, 262138, 0, 3, 262139, 0, 3, 262140, 0, 3, 262141, 0, 3, 262142, 0, 3, 262143, 0, 3, 196608, 0, 3, 196609, 0, 3, 196610, 0, 0, 327672, 0, 1, 327673, 0, 196612, 327674, 0, 458756, 327675, 0, 196614, 327676, 0, 65538, 327677, 0, 196612, 327678, 0, 262147, 327679, 0, 327685, 262144, 0, 65539, 262145, 0, 131073, 262146, 0, 196611, 393208, 0, 131072, 393209, 0, 131073, 393210, 0, 131074, 393211, 0, 65538, 393212, 0, 262149, 393213, 0, 458756, 393214, 0, 65539, 393215, 0, 131073, 327680, 0, 196611, 458746, 0, 131072, 458747, 0, 131073, 458748, 0, 131073, 458749, 0, 131073, 458750, 0, 196611 )
+
+[node name="props" type="Node2D" parent="level_logic"]
+
+[node name="goal" parent="level_logic/props" instance=ExtResource( 9 )]
+position = Vector2( -109, 46 )
+
+[node name="gate_group" parent="level_logic/props" instance=ExtResource( 6 )]
+
+[node name="gate" parent="level_logic/props/gate_group" instance=ExtResource( 4 )]
+position = Vector2( -50, 32 )
+
+[node name="switch" parent="level_logic/props/gate_group" instance=ExtResource( 5 )]
+position = Vector2( 34, 48 )
+frame = 0
+
+[node name="button" parent="level_logic/props/gate_group" instance=ExtResource( 7 )]
+position = Vector2( -23, 48 )
+
+[node name="block" parent="level_logic/props" instance=ExtResource( 8 )]
+position = Vector2( -77, 16 )
+rotation = 3.14159
+
+[node name="player" parent="level_logic" instance=ExtResource( 2 )]
+position = Vector2( 6, 48 )
+
+[node name="player_start" parent="level_logic" instance=ExtResource( 12 )]
+position = Vector2( 102, 141 )

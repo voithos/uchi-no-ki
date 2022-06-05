@@ -36,6 +36,7 @@ scroll_store="*res://scripts/scroll_store.gd"
 saving="*res://scripts/saving.gd"
 progression_store="*res://scripts/progression_store.gd"
 death_counter="*res://scripts/death_counter.gd"
+game_timer="*res://scripts/game_timer.gd"
 
 [display]
 

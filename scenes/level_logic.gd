@@ -7,6 +7,7 @@ export (String, FILE, "*.tscn") var next_level
 func _ready():
     add_to_group("level")
     music.play_background()
+    game_timer.start_if_not_started()
     
     # Load the game state once per level.
     saving.load_game()

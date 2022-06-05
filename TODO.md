@@ -4,7 +4,6 @@
 - Level selection UI
 
 ## Levels
-- Level that introduces the dash crystal
 - Final level
 
 ## Bugs
@@ -73,3 +72,4 @@
 - Level that introduces the mana orb
 - Edge of gate kills you even when it's not moving
 - Transition to level 6 puts player in weird spot
+- Level that introduces the dash crystal
