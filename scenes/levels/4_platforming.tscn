@@ -69,13 +69,13 @@ position = Vector2( -97, -112 )
 rotation = 3.14159
 frame = 0
 is_timed = true
-timeout = 1.0
+timeout = 1.5
 
 [node name="switch3" parent="level_logic/props/gate_group5" instance=ExtResource( 9 )]
 position = Vector2( -15, -96 )
 frame = 0
 is_timed = true
-timeout = 1.0
+timeout = 2.0
 
 [node name="gate_group3" parent="level_logic/props" instance=ExtResource( 4 )]
 
