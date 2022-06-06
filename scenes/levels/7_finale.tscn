@@ -276,4 +276,4 @@ position = Vector2( 346, -743 )
 position = Vector2( 672, 111 )
 
 [node name="player_start" parent="level_logic" instance=ExtResource( 12 )]
-position = Vector2( 416, -693 )
+position = Vector2( 409, -74 )

@@ -137,18 +137,18 @@ position = Vector2( -535, -208 )
 is_latchable = true
 
 [node name="switch" parent="level_logic/props/gate_group3" instance=ExtResource( 5 )]
-position = Vector2( -352, -134 )
-rotation = 7.85397
+position = Vector2( -336, -134 )
+rotation = 10.9956
 frame = 0
 is_timed = true
-timeout = 0.7
+timeout = 1.0
 
 [node name="switch2" parent="level_logic/props/gate_group3" instance=ExtResource( 5 )]
 position = Vector2( -480, -270 )
 rotation = 7.85397
 frame = 0
 is_timed = true
-timeout = 0.5
+timeout = 0.8
 
 [node name="orb4" parent="level_logic/props/gate_group3" instance=ExtResource( 7 )]
 position = Vector2( -403, -193 )
@@ -170,14 +170,14 @@ position = Vector2( -678, -160 )
 rotation = 6.28318
 frame = 0
 is_timed = true
-timeout = 0.7
+timeout = 1.0
 
 [node name="switch2" parent="level_logic/props/gate_group4" instance=ExtResource( 5 )]
 position = Vector2( -879, -176 )
 rotation = 6.28318
 frame = 0
 is_timed = true
-timeout = 0.5
+timeout = 0.8
 
 [node name="orb4" parent="level_logic/props/gate_group4" instance=ExtResource( 7 )]
 position = Vector2( -697, -160 )
@@ -195,4 +195,4 @@ position = Vector2( -609, -176 )
 position = Vector2( 6, 48 )
 
 [node name="player_start" parent="level_logic" instance=ExtResource( 12 )]
-position = Vector2( -571, -199 )
+position = Vector2( -650, -178 )

@@ -436,7 +436,11 @@ func _update_mana(delta):
     # Don't actually change anything if we aren't controllable, but still send the signal.
     if is_controllable:
         if is_shade_out:
-            set_mana(mana - MANA_DEPLETION * delta)
+            # Compute mana depletion. Depletion is based on current shade velocity (the slower we're going, the less depletion).
+            # Increase the ratio a little bit so that we err on depleting more, rather than not enough.
+            var vel_ratio = Vector2(shade_velocity.x / SHADE_HORIZONTAL_VEL, shade_velocity.y / SHADE_VERTICAL_VEL).length() * 1.1
+            var depletion = MANA_DEPLETION * clamp(vel_ratio, 0.3, 1.0)
+            set_mana(mana - depletion * delta)
         else:
             set_mana(mana + MANA_GAIN * delta)
     else:
