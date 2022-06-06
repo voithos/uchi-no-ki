@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/props/thebook.png" type="Texture" id=1]
+[ext_resource path="res://scenes/thebook.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "acquire"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 10, 10, 10, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_scroll_acquire"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../particles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../particles:process_material:initial_velocity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 40.0, 80.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 3.0
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.24, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 1, 1.72, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 2 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../particles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="thebook" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="particles" type="Particles2D" parent="."]
+emitting = false
+amount = 80
+process_material = SubResource( 6 )
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 11
+
+[node name="animation" type="AnimationPlayer" parent="sprite"]
+autoplay = "idle"
+anims/acquire = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="area" type="Area2D" parent="sprite"]
+collision_layer = 0
+
+[node name="shape" type="CollisionPolygon2D" parent="sprite/area"]
+polygon = PoolVector2Array( 19, -20, 29, -9, 16, 28, -21, 26, -26, 21, -14, -24 )
+
+[connection signal="body_entered" from="sprite/area" to="." method="_on_area_body_entered"]
