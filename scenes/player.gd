@@ -193,11 +193,13 @@ func _hide_shade(quiet=false):
     
     if !quiet:
         sfx.play(sfx.SHADE_RETURN, sfx.QUIET_DB)
+        $shade/sprite.modulate.a = 0.5
         $shade/particles.speed_scale = 3.0
         $shade_tween.interpolate_property($shade, "position", $shade.position, Vector2(0, 0),
                SHADE_RETURN_TIME, Tween.TRANS_CUBIC, Tween.EASE_IN)
         $shade_tween.start()
         yield($shade_tween, "tween_completed")
+        $shade/sprite.modulate.a = 1.0
         $shade/particles.speed_scale = 1.0
 
     $shade/particles.restart()
@@ -218,6 +220,7 @@ func _show_shade():
     $shade.show()
     $shade.position = Vector2.ZERO
     shade_velocity = Vector2.ZERO
+    $shade/sprite.modulate.a = 1.0
     $shade/shape.disabled = false
     $shade/particles.restart()
     sfx.play(sfx.SHADE, sfx.QUIET_DB)
