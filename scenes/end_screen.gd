@@ -1,7 +1,6 @@
 extends Node2D
 
-# TODO: Set this to the actual number of scrolls in the final set of levels.
-const TOTAL_SCROLLS = 24
+const TOTAL_SCROLLS = 6
 
 func _ready():
     # Load the game state once per level.
