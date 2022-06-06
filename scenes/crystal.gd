@@ -1,6 +1,6 @@
 extends Sprite
 
-export var respawn_timeout = 3.0 # seconds
+export var respawn_timeout = 1.0 # seconds
 
 func _ready():
     # Randomize a position in the idle "float" animation.
