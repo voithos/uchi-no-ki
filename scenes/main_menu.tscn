@@ -1,10 +1,37 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/transition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui/main_menu.png" type="Texture" id=2]
 [ext_resource path="res://scenes/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/ui/press_space.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/cover_art.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/level_completed.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/monogram.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/ui/backgroundbar.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/cursor.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0.2, 0.172549, 0.313726, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("canvas/level_select/Cursor:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -23,6 +50,22 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "cursor"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("canvas/level_select/Cursor:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+
 [node name="main_menu" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -37,13 +80,130 @@ position = Vector2( 160, 90 )
 texture = ExtResource( 2 )
 
 [node name="press_space" type="Sprite" parent="canvas"]
-visible = false
 position = Vector2( 152, 148 )
 texture = ExtResource( 4 )
+
+[node name="level_select" type="Node2D" parent="canvas"]
+visible = false
+position = Vector2( 160, 130 )
+
+[node name="Backgroundbar" type="Sprite" parent="canvas/level_select"]
+texture = ExtResource( 8 )
+
+[node name="Cursor" type="Sprite" parent="canvas/level_select"]
+position = Vector2( -60, -13 )
+texture = ExtResource( 9 )
+offset = Vector2( 0, -1 )
+
+[node name="l1" type="Sprite" parent="canvas/level_select"]
+position = Vector2( -60, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l1"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l2" type="Sprite" parent="canvas/level_select"]
+position = Vector2( -40, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l2"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l3" type="Sprite" parent="canvas/level_select"]
+position = Vector2( -20, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l3"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l4" type="Sprite" parent="canvas/level_select"]
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l4"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l5" type="Sprite" parent="canvas/level_select"]
+position = Vector2( 20, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l5"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l6" type="Sprite" parent="canvas/level_select"]
+position = Vector2( 40, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l6"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l7" type="Sprite" parent="canvas/level_select"]
+position = Vector2( 60, 0 )
+texture = ExtResource( 6 )
+
+[node name="level" type="Label" parent="canvas/level_select/l7"]
+margin_left = -2.37842
+margin_top = 6.83794
+margin_right = 9.62158
+margin_bottom = 20.8379
+theme = SubResource( 3 )
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="transition" parent="." instance=ExtResource( 1 )]
 start_immediately = false
 
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "blink"
+anims/RESET = SubResource( 4 )
 anims/blink = SubResource( 1 )
+anims/cursor = SubResource( 5 )

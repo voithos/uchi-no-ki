@@ -1,13 +1,5 @@
 # TODO
 
-## UI
-- Level selection UI
-
-## Levels
-- Final level
-
-## Bugs
-
 ## == Done ==
 
 - Design
@@ -73,3 +65,5 @@
 - Edge of gate kills you even when it's not moving
 - Transition to level 6 puts player in weird spot
 - Level that introduces the dash crystal
+- Level selection UI
+- Final level
