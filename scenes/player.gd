@@ -67,7 +67,7 @@ var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
 var is_about_to_dash = false
 var dash_start_timer = 0.0
-const DASH_START_DELAY = 0.13 # seconds
+const DASH_START_DELAY = 0.22 # seconds
 
 const WALK_SFX_COOLDOWN = 0.3 # seconds
 var walk_sfx_cooldown = 0
@@ -248,6 +248,9 @@ func shade_dash(dir: Vector2):
     is_dashburst = false
     dash_timer = 0.0
     dash_direction = dir.normalized()
+    
+    # Make things a bit easier.
+    set_mana(mana + 15)
 
     global_camera.shake(DASH_ACCEL_DURATION * 0.6, 30, 2)
     sfx.play(sfx.SHADE_DASH, sfx.SFX_DB)
@@ -375,6 +378,9 @@ func _move_shade(delta):
         dash_start_timer += delta
         if dash_start_timer >= DASH_START_DELAY:
             shade_dash(_shade_vector_with_input(input_vector))
+        else:
+            shade_velocity.x = lerp(shade_velocity.x, 0, SHADE_HORIZONTAL_ACCEL * delta)
+            shade_velocity.y = lerp(shade_velocity.y, 0, SHADE_VERTICAL_ACCEL * delta)
     else:
         # Main movement.
         # No gravity for shade
@@ -439,7 +445,10 @@ func _update_mana(delta):
             # Compute mana depletion. Depletion is based on current shade velocity (the slower we're going, the less depletion).
             # Increase the ratio a little bit so that we err on depleting more, rather than not enough.
             var vel_ratio = Vector2(shade_velocity.x / SHADE_HORIZONTAL_VEL, shade_velocity.y / SHADE_VERTICAL_VEL).length() * 1.1
-            var depletion = MANA_DEPLETION * clamp(vel_ratio, 0.3, 1.0)
+            var min_depletion = 0.3
+            if is_about_to_dash:
+                min_depletion = 0.15
+            var depletion = MANA_DEPLETION * clamp(vel_ratio, min_depletion, 1.0)
             set_mana(mana - depletion * delta)
         else:
             set_mana(mana + MANA_GAIN * delta)

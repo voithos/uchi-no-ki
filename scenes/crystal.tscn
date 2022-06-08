@@ -28,7 +28,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.36 ),
+"times": PoolRealArray( 0, 0.46 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 6 ]
@@ -147,9 +147,8 @@ height = 4.0
 [node name="crystal" type="Node2D"]
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-hframes = 7
-frame = 6
+texture = ExtResource( 1 )
+hframes = 6
 script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="sprite"]
